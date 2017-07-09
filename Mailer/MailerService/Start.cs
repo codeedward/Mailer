@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MailerService
 {
-    class Program
+    internal class Start
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
         }
     }

@@ -43,7 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Constants\" />
     <Folder Include="Dto\" />
+    <Folder Include="Helpers\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />

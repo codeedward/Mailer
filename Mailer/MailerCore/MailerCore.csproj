@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ClientMailerSendDto.cs" />
+    <Compile Include="Models\ClientMailerSendStatus.cs" />
+    <Compile Include="Interfaces\IClientMailer.cs" />
+    <Compile Include="Models\ClientMailer.cs" />
+    <Compile Include="Enums\StatusMailerSend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
