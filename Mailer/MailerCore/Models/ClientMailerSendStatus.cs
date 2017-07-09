@@ -1,6 +1,6 @@
 ﻿using MailerCore.Enums;
 
-namespace MailerCore.Interfaces
+namespace MailerCore.Models
 {
     public class ClientMailerSendStatus
     {

@@ -46,6 +46,8 @@
     <Compile Include="Interfaces\IClientMailer.cs" />
     <Compile Include="Models\ClientMailer.cs" />
     <Compile Include="Enums\StatusMailerSend.cs" />
+    <Compile Include="Enums\EmailType.cs" />
+    <Compile Include="Models\Replacement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\MailerService.cs" />
+    <Compile Include="Infrastructure\MailerServiceConfiguration.cs" />
+    <Compile Include="Interfaces\IMailerService.cs" />
+    <Compile Include="Interfaces\IMailerServiceConfiguration.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

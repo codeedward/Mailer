@@ -40,14 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Services\IEmailQueueService.cs" />
+    <Compile Include="Interfaces\Services\IEmailReceiverService.cs" />
+    <Compile Include="Interfaces\Services\IEmailReplacementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EmailQueueRepository.cs" />
+    <Compile Include="Repositories\EmailReplacementRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Constants\" />
     <Folder Include="Dto\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
