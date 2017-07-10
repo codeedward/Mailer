@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using MailerCommon.Dto;
 
-namespace MailerCommon.Interfaces
+namespace MailerCommon.Interfaces.Services
 {
     public interface IEmailQueueService
     {
-        //TODO fill with proper objects
-        bool Save(object emailQueue);
-        List<object> GetEmailsToProcess();
+        long Save(EmailQueueDto emailQueue);
+        List<EmailQueueDto> GetEmailsToProcess();
+        void MarkAsProcessed(long emailQueueId);
     }
 }

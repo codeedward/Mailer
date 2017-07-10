@@ -2,6 +2,6 @@
 {
     public interface IMailerServiceConfiguration
     {
-        
+        void Configure();
     }
 }
