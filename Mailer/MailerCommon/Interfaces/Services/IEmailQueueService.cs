@@ -8,6 +8,7 @@ namespace MailerCommon.Interfaces.Services
     {
         long Save(EmailQueueDto emailQueue);
         List<EmailQueueDto> GetEmailsToProcess();
-        void MarkAsProcessed(long emailQueueId);
+        bool MarkAsProcessed(long emailQueueId);
+        bool MarkFailure(long emailQueueEmailQueueId);
     }
 }

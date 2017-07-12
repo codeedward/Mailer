@@ -51,10 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EmailQueueRepository.cs" />
     <Compile Include="Repositories\EmailReplacementRepository.cs" />
+    <Compile Include="Services\EmailQueueService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Constants\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MailerCore\MailerCore.csproj">

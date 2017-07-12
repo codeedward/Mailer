@@ -68,45 +68,30 @@ namespace MailerService.Infrastructure
             throw new NotImplementedException();
         }
 
-        //TODO sth is wrong with that function - move try/catch inside service methods and use return values to decide if transaction should commit and what to log
         public void Process()
         {
             var emailsQueue = _emailQueueService.GetEmailsToProcess();
             foreach (var emailQueue in emailsQueue)
             {
-                //2.Process one by one
-                using (TransactionScope trans = new TransactionScope())
+                bool sendSuccess = false;
+                bool markAsProcessed;
+                using (var trans = new TransactionScope())
                 {
-                    bool sendSuccess = false;
-                    //try
-                    //{
-                        //TODO description ignore for now, emailQueue should have all that info
-                        //3.Send email through .Net(and save date to variable)
-                        //a) Get replacements
-                        //var replacements = _replacementService.GetEmailReplacements(emailQueue.EmailQueueId);
-                        //b) Get receivers
-                        //var receivers = _receiverService
-                        //c) Send email
+                    markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
+                    if (markAsProcessed)
+                    {
                         sendSuccess = EmailHelper.SendEmail(emailQueue);
-                    //}
-                    //catch (Exception ex)
-                    //{
-                        //3.Decrement value of tries, value of AvailableToSendUtc, or change mail status to error.
-                        //Log error -error during send emails
-                    //}
-
-                    //try
-                    //{
-                       //4.Update status to processed and SendDate - IMailerQueueService
-                       _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
-                    //}
-                    //catch
-                    //{
-                        //4.Log error - error during update email status
-                    //}
+                        if (sendSuccess)
+                        {
+                            trans.Complete();
+                        }
+                    }
+                }
+                if (!sendSuccess && markAsProcessed)
+                {
+                    _emailQueueService.MarkFailure(emailQueue.EmailQueueId);
                 }
             }
-            throw new NotImplementedException();
         }
     }
 }
