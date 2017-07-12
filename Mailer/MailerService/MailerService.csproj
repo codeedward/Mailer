@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\EmailProcessorHelper.cs" />
     <Compile Include="Infrastructure\MailerService.cs" />
     <Compile Include="Infrastructure\MailerServiceConfiguration.cs" />
     <Compile Include="Interfaces\IMailerService.cs" />

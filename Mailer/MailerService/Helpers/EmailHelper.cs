@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 using MailerCommon.Dto;
 
 namespace MailerService.Helpers
@@ -21,6 +22,9 @@ namespace MailerService.Helpers
             mailMessage.Subject = "Password Recover";
             mailMessage.Body = "Message";
             client.Send(mailMessage);
+
+
+            throw new NotImplementedException();
         }
     }
 }

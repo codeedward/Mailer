@@ -56,11 +56,5 @@
   <ItemGroup>
     <Folder Include="Constants\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MailerCore\MailerCore.csproj">
-      <Project>{4EEC0287-5B89-497C-8BE7-AFB77E589ACA}</Project>
-      <Name>MailerCore</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
