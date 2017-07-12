@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using MailerCommon.Dto;
 
-namespace MailerCommon.Interfaces
+namespace MailerCommon.Interfaces.Services
 {
     public interface IEmailReceiverService
     {
-        //TODO fill with proper objects
-        bool Save(object emailReceiver);
+        //bool Save(EmailReceiverDto emailReceiver);
+        //List<EmailReceiverDto> GetEmailReceivers(long emailQueueId);
     }
 }

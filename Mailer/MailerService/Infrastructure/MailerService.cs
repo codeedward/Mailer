@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
+using MailerCommon.Interfaces;
 using MailerCommon.Interfaces.Services;
+using MailerService.Helpers;
 using MailerService.Interfaces;
 
 namespace MailerService.Infrastructure
@@ -10,11 +12,18 @@ namespace MailerService.Infrastructure
     public class MailerService : IMailerService
     {
         private readonly IEmailQueueService _emailQueueService;
+        private readonly IEmailReplacementService _replacementService;
+        private readonly IEmailReceiverService _receiverService;
 
         //TODO install some IoC container
-        public MailerService(IEmailQueueService emailQueueService)
+        public MailerService(
+            IEmailQueueService emailQueueService, 
+            IEmailReplacementService replacementService,
+            IEmailReceiverService receiverService)
         {
             _emailQueueService = emailQueueService;
+            _replacementService = replacementService;
+            _receiverService = receiverService;
         }
 
         //TODO Process mails prototype flow
@@ -59,36 +68,42 @@ namespace MailerService.Infrastructure
             throw new NotImplementedException();
         }
 
-        //TODO sth is wrong with that function
+        //TODO sth is wrong with that function - move try/catch inside service methods and use return values to decide if transaction should commit and what to log
         public void Process()
         {
-            var emails = _emailQueueService.GetEmailsToProcess();
-            foreach (var email in emails)
+            var emailsQueue = _emailQueueService.GetEmailsToProcess();
+            foreach (var emailQueue in emailsQueue)
             {
                 //2.Process one by one
                 using (TransactionScope trans = new TransactionScope())
                 {
                     bool sendSuccess = false;
-                    try
-                    {
-                        //    3.Send email through .Net(and save date to variable)
-                        //TODO Send Email (create class to send emails through .Net)
-                        sendSuccess = true;
-                    }
-                    catch (Exception ex)
-                    {
+                    //try
+                    //{
+                        //TODO description ignore for now, emailQueue should have all that info
+                        //3.Send email through .Net(and save date to variable)
+                        //a) Get replacements
+                        //var replacements = _replacementService.GetEmailReplacements(emailQueue.EmailQueueId);
+                        //b) Get receivers
+                        //var receivers = _receiverService
+                        //c) Send email
+                        sendSuccess = EmailHelper.SendEmail(emailQueue);
+                    //}
+                    //catch (Exception ex)
+                    //{
                         //3.Decrement value of tries, value of AvailableToSendUtc, or change mail status to error.
                         //Log error -error during send emails
-                    }
+                    //}
 
-                    try
-                    {
+                    //try
+                    //{
                        //4.Update status to processed and SendDate - IMailerQueueService
-                    }
-                    catch
-                    {
+                       _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
+                    //}
+                    //catch
+                    //{
                         //4.Log error - error during update email status
-                    }
+                    //}
                 }
             }
             throw new NotImplementedException();
