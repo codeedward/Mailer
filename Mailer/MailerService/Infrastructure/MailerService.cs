@@ -40,7 +40,7 @@ namespace MailerService.Infrastructure
                     markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
                     if (markAsProcessed)
                     {
-                        sendSuccess = EmailHelper.SendEmail(emailQueue);
+                        sendSuccess = EmailProcessorHelper.Process(emailQueue);
                         if (sendSuccess)
                         {
                             trans.Complete();

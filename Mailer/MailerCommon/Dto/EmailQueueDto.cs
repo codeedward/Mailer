@@ -13,6 +13,8 @@ namespace MailerCommon.Dto
         public MailAddress From { get; set; }
         public string SubjectTemplate { get; set; }
         public string BodyTemplate { get; set; }
+        public string Host { get; set; }
+        public int Port { get; set; }
         public List<EmailReplacementDto> Replacements { get; set; }
         public List<MailAddress> To { get; set; }
         public List<MailAddress> Cc { get; set; }

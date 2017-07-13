@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mail;
 using MailerCommon.Dto;
 
@@ -6,25 +8,63 @@ namespace MailerService.Helpers
 {
     public static class EmailHelper
     {
-        //TODO change that and put it asynchronous call
-        public static bool SendEmail(EmailQueueDto emailQueueDto)
+        public static bool SendEmail(SendSimpleEmailDto sendEmailDto)
         {
-            MailMessage mailMessage = new MailMessage();
-            SmtpClient client = new SmtpClient();
-            client.Port = 25;
-            client.Host = "smtp.internal.mycompany.com";
-            client.Timeout = 10000;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("user", "Password");
-            mailMessage.From = new MailAddress("from@server.com");
-            mailMessage.To.Add(new MailAddress("to@server.com"));
-            mailMessage.Subject = "Password Recover";
-            mailMessage.Body = "Message";
-            client.Send(mailMessage);
+            var mailTo = AddMailAddressToCollection(new List<MailAddress>(), sendEmailDto.ToAddress);
+            var complexMailDto = new SendComplexEmailDto(mailTo, null, null, sendEmailDto);
 
-
-            throw new NotImplementedException();
+            return DoSend(complexMailDto);
         }
+
+        public static bool SendEmail(SendComplexEmailDto sendEmailDto)
+        {
+            return DoSend(sendEmailDto);
+        }
+
+        public static List<MailAddress> AddMailAddressToCollection(List<MailAddress> emailAddresses, string email, string displayName = "")
+        {
+            try
+            {
+                emailAddresses.Add(new MailAddress(email, displayName));
+            }
+            catch (Exception ex)
+            {
+                //TODO log error
+            }
+            return emailAddresses;
+        }
+
+        #region Private methods
+
+        private static bool DoSend(SendComplexEmailDto complexEmailDto)
+        {
+            try
+            {
+                var message = new MailMessage
+                {
+                    IsBodyHtml = true,
+                    From = complexEmailDto.FromAddress,
+                    Subject = complexEmailDto.Subject,
+                    Body = complexEmailDto.MessageBody
+                };
+
+                var emptyAddressList = new List<MailAddress>();
+                message.To.ToList().AddRange(complexEmailDto.ToAddress ?? emptyAddressList);
+                message.CC.ToList().AddRange(complexEmailDto.ToAddressCc ?? emptyAddressList);
+                message.Bcc.ToList().AddRange(complexEmailDto.ToAddressBcc ?? emptyAddressList);
+
+                using (var smtpClient = new SmtpClient(complexEmailDto.Host, complexEmailDto.Port))
+                {
+                    smtpClient.Send(message);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //TODO log error
+                return false;
+            }
+        }
+        #endregion
     }
 }

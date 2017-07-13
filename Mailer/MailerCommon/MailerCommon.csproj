@@ -44,6 +44,9 @@
     <Compile Include="Dto\EmailQueueDto.cs" />
     <Compile Include="Dto\EmailReplacementDto.cs" />
     <Compile Include="Dto\EmailReceiverDto.cs" />
+    <Compile Include="Dto\SendComplexEmailDto.cs" />
+    <Compile Include="Dto\SendEmailBaseDto.cs" />
+    <Compile Include="Dto\SendSimpleEmailDto.cs" />
     <Compile Include="Enums\EmailQueueStatus.cs" />
     <Compile Include="Interfaces\Services\IEmailQueueService.cs" />
     <Compile Include="Interfaces\Services\IEmailReceiverService.cs" />

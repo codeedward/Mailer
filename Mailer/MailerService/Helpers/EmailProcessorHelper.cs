@@ -14,7 +14,8 @@ namespace MailerService.Helpers
             //TODO rethink it twice how to pass that new values to SendEmail method
             var readySubject = ReplaceReplacements(emailQueue.SubjectTemplate, emailQueue.Replacements);
             var readyBody = ReplaceReplacements(emailQueue.BodyTemplate, emailQueue.Replacements);
-            return EmailHelper.SendEmail(emailQueue);
+            var sendEmailDto = new SendComplexEmailDto(emailQueue.To, emailQueue.Cc, emailQueue.Bcc, emailQueue.From, readyBody, readySubject, emailQueue.Host, emailQueue.Port);
+            return EmailHelper.SendEmail(sendEmailDto);
         }
 
         private static string ReplaceReplacements(string emailQueueSubjectTemplate, List<EmailReplacementDto> emailQueueReplacements)
