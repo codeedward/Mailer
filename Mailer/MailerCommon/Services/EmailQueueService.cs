@@ -62,11 +62,11 @@ namespace MailerCommon.Services
             }
         }
 
-        public bool MarkFailure(long emailQueueId)
+        public bool MarkFailure(long emailQueueId, long intervalAfterFailSendingAttemptInSeconds)
         {
             try
             {
-                var emailsToProcess = _emailQueueRepository.MarkFailure(emailQueueId);
+                var emailsToProcess = _emailQueueRepository.MarkFailure(emailQueueId, intervalAfterFailSendingAttemptInSeconds);
                 return emailsToProcess;
             }
             catch (Exception e)

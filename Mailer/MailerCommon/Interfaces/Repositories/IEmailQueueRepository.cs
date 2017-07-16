@@ -8,6 +8,6 @@ namespace MailerCommon.Interfaces.Repositories
         long Save(EmailQueueDto emailQueue);
         List<EmailQueueDto> GetEmailsToProcess();
         bool MarkAsProcessed(long emailQueueId);
-        bool MarkFailure(long emailQueueEmailQueueId);
+        bool MarkFailure(long emailQueueEmailQueueId, long intervalAfterFailSendingAttemptInSeconds);
     }
 }

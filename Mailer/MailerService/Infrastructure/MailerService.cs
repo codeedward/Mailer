@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using MailerCommon.Interfaces.Services;
+using MailerService.Constants;
 using MailerService.Helpers;
 using MailerService.Interfaces;
 
@@ -49,7 +50,9 @@ namespace MailerService.Infrastructure
                 }
                 if (!sendSuccess && markAsProcessed)
                 {
-                    _emailQueueService.MarkFailure(emailQueue.EmailQueueId);
+                    var intervalAfterFailSendingAttemptInSeconds = ConfigurationHelper.GetNumber(ConfigurationNames.IntervalAfterFailSendingAttemptInSeconds,
+                        ConfiguratoinDefaultValues.IntervalAfterFailSendingAttemptInSeconds);
+                    _emailQueueService.MarkFailure(emailQueue.EmailQueueId, intervalAfterFailSendingAttemptInSeconds);
                 }
             }
         }

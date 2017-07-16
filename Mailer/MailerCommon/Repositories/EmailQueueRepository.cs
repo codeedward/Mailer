@@ -40,7 +40,7 @@ namespace MailerCommon.Repositories
             throw new NotImplementedException();
         }
 
-        public bool MarkFailure(long emailQueueEmailQueueId)
+        public bool MarkFailure(long emailQueueEmailQueueId, long intervalAfterFailSendingAttemptInSeconds)
         {
             //TODO implement
             //3.Decrement value of tries, value of AvailableToSendUtc, or change mail status to error.

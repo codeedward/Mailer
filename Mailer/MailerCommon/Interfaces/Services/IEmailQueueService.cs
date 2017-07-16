@@ -10,6 +10,6 @@ namespace MailerCommon.Interfaces.Services
         ClientMailerSendStatus Save(EmailQueueDto emailQueue);
         List<EmailQueueDto> GetEmailsToProcess();
         bool MarkAsProcessed(long emailQueueId);
-        bool MarkFailure(long emailQueue);
+        bool MarkFailure(long emailQueue, long intervalAfterFailSendingAttemptInSeconds);
     }
 }

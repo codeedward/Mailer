@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ConfigurationNames.cs" />
+    <Compile Include="Constants\ConfiguratoinDefaultValues.cs" />
+    <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\EmailProcessorHelper.cs" />
     <Compile Include="Infrastructure\MailerService.cs" />
@@ -56,9 +60,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
       <Project>{2ccbb105-310c-4921-b385-677784dd1895}</Project>
