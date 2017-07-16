@@ -48,12 +48,15 @@
     <Compile Include="Dto\SendEmailBaseDto.cs" />
     <Compile Include="Dto\SendSimpleEmailDto.cs" />
     <Compile Include="Enums\EmailQueueStatus.cs" />
+    <Compile Include="Enums\StatusMailerSend.cs" />
     <Compile Include="Interfaces\Services\IEmailQueueService.cs" />
     <Compile Include="Interfaces\Services\IEmailReceiverService.cs" />
     <Compile Include="Interfaces\Services\IEmailReplacementService.cs" />
+    <Compile Include="Models\ClientMailerSendStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EmailQueueRepository.cs" />
     <Compile Include="Repositories\EmailReplacementRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IEmailQueueRepository.cs" />
     <Compile Include="Services\EmailQueueService.cs" />
   </ItemGroup>
   <ItemGroup>

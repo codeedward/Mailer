@@ -1,13 +1,23 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
+using MailerCommon.Dto;
+using MailerCommon.Interfaces.Services;
+using MailerCommon.Models;
 using MailerCore.Interfaces;
 
 namespace MailerCore.Models
 {
     public class ClientMailer : IClientMailer
     {
-        public ClientMailerSendStatus Send(ClientMailerSendDto clientMailerSendDto)
+        private readonly IEmailQueueService _emailQueueService;
+
+        public ClientMailer(IEmailQueueService emailQueueService)
         {
-            throw new System.NotImplementedException();
+            _emailQueueService = emailQueueService;
+        }
+
+        public ClientMailerSendStatus Send(EmailQueueDto clientMailerSendDto)
+        {
+            return _emailQueueService.Save(clientMailerSendDto);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace MailerService.Infrastructure
             var emailsQueue = _emailQueueService.GetEmailsToProcess();
             foreach (var emailQueue in emailsQueue)
             {
-                bool sendSuccess = false;
+                var sendSuccess = false;
                 bool markAsProcessed;
                 using (var trans = new TransactionScope())
                 {

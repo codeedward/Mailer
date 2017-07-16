@@ -1,4 +1,4 @@
-﻿namespace MailerCore.Enums
+﻿namespace MailerCommon.Enums
 {
     public enum StatusMailerSend
     {

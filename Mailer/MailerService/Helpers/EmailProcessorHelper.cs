@@ -11,7 +11,6 @@ namespace MailerService.Helpers
     {
         public static bool Process(EmailQueueDto emailQueue)
         {
-            //TODO rethink it twice how to pass that new values to SendEmail method
             var readySubject = ReplaceReplacements(emailQueue.SubjectTemplate, emailQueue.Replacements);
             var readyBody = ReplaceReplacements(emailQueue.BodyTemplate, emailQueue.Replacements);
             var sendEmailDto = new SendComplexEmailDto(emailQueue.To, emailQueue.Cc, emailQueue.Bcc, emailQueue.From, readyBody, readySubject, emailQueue.Host, emailQueue.Port);

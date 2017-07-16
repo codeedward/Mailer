@@ -41,13 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ClientMailerSendDto.cs" />
-    <Compile Include="Models\ClientMailerSendStatus.cs" />
     <Compile Include="Interfaces\IClientMailer.cs" />
     <Compile Include="Models\ClientMailer.cs" />
-    <Compile Include="Enums\StatusMailerSend.cs" />
-    <Compile Include="Models\Replacement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+      <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
+      <Name>MailerCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

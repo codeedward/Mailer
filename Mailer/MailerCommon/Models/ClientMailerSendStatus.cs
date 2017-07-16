@@ -1,6 +1,6 @@
-﻿using MailerCore.Enums;
+﻿using MailerCommon.Enums;
 
-namespace MailerCore.Models
+namespace MailerCommon.Models
 {
     public class ClientMailerSendStatus
     {
@@ -14,11 +14,10 @@ namespace MailerCore.Models
             MailId = mailId;
         }
 
-        public ClientMailerSendStatus(StatusMailerSend status, string errorMessage, long mailId)
+        public ClientMailerSendStatus(StatusMailerSend status, string errorMessage)
         {
             Status = status;
             ErrorMessage = errorMessage;
-            MailId = mailId;
         }
     }
 }
