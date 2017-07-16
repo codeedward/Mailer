@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ServiceNames.cs" />
     <Compile Include="Dto\EmailQueueDto.cs" />
     <Compile Include="Dto\EmailReplacementDto.cs" />
     <Compile Include="Dto\EmailReceiverDto.cs" />
@@ -49,6 +51,7 @@
     <Compile Include="Dto\SendSimpleEmailDto.cs" />
     <Compile Include="Enums\EmailQueueStatus.cs" />
     <Compile Include="Enums\StatusMailerSend.cs" />
+    <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Interfaces\Services\IEmailQueueService.cs" />
     <Compile Include="Interfaces\Services\IEmailReceiverService.cs" />
     <Compile Include="Interfaces\Services\IEmailReplacementService.cs" />
@@ -59,8 +62,6 @@
     <Compile Include="Interfaces\Repositories\IEmailQueueRepository.cs" />
     <Compile Include="Services\EmailQueueService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

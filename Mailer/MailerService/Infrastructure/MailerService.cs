@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
+using MailerCommon.Helpers;
 using MailerCommon.Interfaces.Services;
 using MailerService.Constants;
 using MailerService.Helpers;
