@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MailerCommon.Constants;
-using MailerCommon.Repositories;
-using MailerCommon.Services;
+﻿using MailerCommon.Constants;
+using MailerCommon.Interfaces.Services;
+using Microsoft.Practices.Unity;
+using Quartz;
 using Topshelf;
 
 namespace MailerService.Infrastructure
@@ -19,8 +15,7 @@ namespace MailerService.Infrastructure
                 configure.StartAutomatically();
                 configure.Service<MailerService>(service =>
                 {
-                    //TODO use IoC
-                    service.ConstructUsing(s => new MailerService(new EmailQueueService(new EmailQueueRepository())));
+                    service.ConstructUsing(s => new MailerService());
                     service.WhenStarted(s => s.Start());
                     service.WhenStopped(s => s.Stop());
                 });

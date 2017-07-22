@@ -1,61 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Transactions;
-using MailerCommon.Helpers;
-using MailerCommon.Interfaces.Services;
-using MailerService.Constants;
-using MailerService.Helpers;
-using MailerService.Interfaces;
+﻿using MailerService.Interfaces;
+using Quartz;
+using Quartz.Impl;
 
 namespace MailerService.Infrastructure
 {
     public class MailerService : IMailerService
     {
-        private readonly IEmailQueueService _emailQueueService;
+        private ISchedulerFactory _schedulerFactory;
+        private IScheduler _sched;
 
         //TODO install some IoC container
-        public MailerService(IEmailQueueService emailQueueService)
+        public MailerService()
         {
-            _emailQueueService = emailQueueService;
+            //TODO add this to IoC
+            InitializeScheduler();
         }
 
         public void Start()
         {
-            throw new NotImplementedException();
+            _sched.Start();
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            _sched.PauseAll();
         }
 
-        public void Process()
+        private void InitializeScheduler()
         {
-            var emailsQueue = _emailQueueService.GetEmailsToProcess();
-            foreach (var emailQueue in emailsQueue)
-            {
-                var sendSuccess = false;
-                bool markAsProcessed;
-                using (var trans = new TransactionScope())
-                {
-                    markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
-                    if (markAsProcessed)
-                    {
-                        sendSuccess = EmailProcessorHelper.Process(emailQueue);
-                        if (sendSuccess)
-                        {
-                            trans.Complete();
-                        }
-                    }
-                }
-                if (!sendSuccess && markAsProcessed)
-                {
-                    var intervalAfterFailSendingAttemptInSeconds = ConfigurationHelper.GetNumber(ConfigurationNames.IntervalAfterFailSendingAttemptInSeconds,
-                        ConfiguratoinDefaultValues.IntervalAfterFailSendingAttemptInSeconds);
-                    _emailQueueService.MarkFailure(emailQueue.EmailQueueId, intervalAfterFailSendingAttemptInSeconds);
-                }
-            }
+            _schedulerFactory = new StdSchedulerFactory();
+
+            _sched = _schedulerFactory.GetScheduler();
+
+            IJobDetail job = JobBuilder.Create<ProcessEmailsJob>()
+                .WithIdentity("myJob", "group1")
+                .Build();
+
+            ITrigger trigger = TriggerBuilder.Create()
+                .WithIdentity("myTrigger", "group1")
+                .StartNow()
+                .WithSimpleSchedule(x => x
+                    .WithIntervalInSeconds(10)
+                    .RepeatForever())
+                .Build();
+
+            _sched.ScheduleJob(job, trigger);
         }
     }
 }
