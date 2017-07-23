@@ -62,7 +62,7 @@ namespace MailerCommon.Services
             }
         }
 
-        public bool MarkFailure(long emailQueueId, long intervalAfterFailSendingAttemptInSeconds)
+        public bool MarkFailure(long emailQueueId, int intervalAfterFailSendingAttemptInSeconds)
         {
             try
             {

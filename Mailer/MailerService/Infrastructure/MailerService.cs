@@ -1,4 +1,6 @@
-﻿using MailerService.Interfaces;
+﻿using MailerCommon.Helpers;
+using MailerService.Constants;
+using MailerService.Interfaces;
 using Quartz;
 using Quartz.Impl;
 
@@ -23,13 +25,12 @@ namespace MailerService.Infrastructure
 
         public void Stop()
         {
-            _sched.PauseAll();
+            _sched.Shutdown();
         }
 
         private void InitializeScheduler()
         {
             _schedulerFactory = new StdSchedulerFactory();
-
             _sched = _schedulerFactory.GetScheduler();
 
             IJobDetail job = JobBuilder.Create<ProcessEmailsJob>()
@@ -40,7 +41,8 @@ namespace MailerService.Infrastructure
                 .WithIdentity("myTrigger", "group1")
                 .StartNow()
                 .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(10)
+                    .WithIntervalInSeconds(ConfigurationHelper.GetNumber(ConfigurationNames.ProcessEmailsJobInterval,
+                            ConfiguratoinDefaultValues.ProcessEmailsJobInterval))
                     .RepeatForever())
                 .Build();
 

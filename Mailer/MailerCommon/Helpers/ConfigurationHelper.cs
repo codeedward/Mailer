@@ -4,14 +4,14 @@ namespace MailerCommon.Helpers
 {
     public static class ConfigurationHelper
     {
-        public static long GetNumber(string key, long defaultValue)
+        public static int GetNumber(string key, int defaultValue)
         {
             var value = ConfigurationManager.AppSettings[key];
             if (string.IsNullOrEmpty(value))
             {
                 return defaultValue;
             }
-            return long.TryParse(value, out var result) ? result : defaultValue;
+            return int.TryParse(value, out var result) ? result : defaultValue;
         }
     }
 }
