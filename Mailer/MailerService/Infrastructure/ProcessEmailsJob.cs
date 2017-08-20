@@ -12,6 +12,13 @@ namespace MailerService.Infrastructure
 {
     public class ProcessEmailsJob : IJob
     {
+        private readonly IEmailQueueService _emailQueueService;
+
+        public ProcessEmailsJob(IEmailQueueService emailQueueService)
+        {
+            _emailQueueService = emailQueueService;
+        }
+
         public void Execute(IJobExecutionContext context)
         {
             Process();
@@ -19,8 +26,7 @@ namespace MailerService.Infrastructure
 
         public void Process()
         {
-            var emailQueueService = Bootstraper.Container.Resolve<IEmailQueueService>();
-            var emailsQueue = emailQueueService.GetEmailsToProcess();
+            var emailsQueue = _emailQueueService.GetEmailsToProcess();
             if (emailsQueue != null)
             {
                 foreach (var emailQueue in emailsQueue)
@@ -29,7 +35,7 @@ namespace MailerService.Infrastructure
                     bool markAsProcessed;
                     using (var trans = new TransactionScope())
                     {
-                        markAsProcessed = emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
+                        markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
                         if (markAsProcessed)
                         {
                             sendSuccess = EmailProcessorHelper.Process(emailQueue);
@@ -43,7 +49,7 @@ namespace MailerService.Infrastructure
                     {
                         var intervalAfterFailSendingAttemptInSeconds = ConfigurationHelper.GetNumber(ConfigurationNames.IntervalAfterFailSendingAttemptInSeconds,
                             ConfiguratoinDefaultValues.IntervalAfterFailSendingAttemptInSeconds);
-                        emailQueueService.MarkFailure(emailQueue.EmailQueueId, intervalAfterFailSendingAttemptInSeconds);
+                        _emailQueueService.MarkFailure(emailQueue.EmailQueueId, intervalAfterFailSendingAttemptInSeconds);
                     }
                 } 
             }

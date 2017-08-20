@@ -3,12 +3,14 @@ using MailerService.Constants;
 using MailerService.Interfaces;
 using Quartz;
 using Quartz.Impl;
+using Microsoft.Practices.Unity;
+using Quartz.Core;
 
 namespace MailerService.Infrastructure
 {
     public class MailerService : IMailerService
     {
-        private ISchedulerFactory _schedulerFactory;
+        //private ISchedulerFactory _schedulerFactory;
         private IScheduler _sched;
 
         //TODO install some IoC container
@@ -30,8 +32,9 @@ namespace MailerService.Infrastructure
 
         private void InitializeScheduler()
         {
-            _schedulerFactory = new StdSchedulerFactory();
-            _sched = _schedulerFactory.GetScheduler();
+            //TODO check if this IoC works well
+            _sched = new StdSchedulerFactory().GetScheduler(); //Bootstraper.Container.Resolve<IScheduler>();
+            _sched.JobFactory = new UnityJobFactory(Bootstraper.Container);
 
             IJobDetail job = JobBuilder.Create<ProcessEmailsJob>()
                 .WithIdentity("myJob", "group1")
