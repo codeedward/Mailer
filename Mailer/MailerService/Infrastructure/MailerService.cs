@@ -10,13 +10,10 @@ namespace MailerService.Infrastructure
 {
     public class MailerService : IMailerService
     {
-        //private ISchedulerFactory _schedulerFactory;
         private IScheduler _sched;
 
-        //TODO install some IoC container
         public MailerService()
         {
-            //TODO add this to IoC
             InitializeScheduler();
         }
 
@@ -32,7 +29,6 @@ namespace MailerService.Infrastructure
 
         private void InitializeScheduler()
         {
-            //TODO check if this IoC works well
             _sched =  Bootstraper.Container.Resolve<IScheduler>();
             _sched.JobFactory = new UnityJobFactory(Bootstraper.Container);
 

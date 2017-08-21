@@ -1,5 +1,4 @@
-﻿using MailerCommon.Interfaces.Services;
-using MailerCommon.Services;
+﻿using System.Reflection;
 using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Impl;
@@ -18,11 +17,11 @@ namespace MailerService
         private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterTypes(
-                AllClasses.FromLoadedAssemblies(),
+                AllClasses.FromAssembliesInBasePath(),
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
 
-            container.RegisterType<IEmailQueueService, EmailQueueService>();
+            //container.RegisterType<IEmailQueueService, EmailQueueService>(); TODO don't need that anymore
             container.RegisterType<IScheduler>(new InjectionFactory(c => new StdSchedulerFactory().GetScheduler()));
         }
     }
