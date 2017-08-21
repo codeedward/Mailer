@@ -1,6 +1,8 @@
 ﻿using MailerCommon.Interfaces.Services;
 using MailerCommon.Services;
 using Microsoft.Practices.Unity;
+using Quartz;
+using Quartz.Impl;
 
 namespace MailerService
 {
@@ -21,6 +23,7 @@ namespace MailerService
                 WithName.Default);
 
             container.RegisterType<IEmailQueueService, EmailQueueService>();
+            container.RegisterType<IScheduler>(new InjectionFactory(c => new StdSchedulerFactory().GetScheduler()));
         }
     }
 }

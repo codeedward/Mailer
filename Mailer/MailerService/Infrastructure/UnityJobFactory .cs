@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System;
+using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Spi;
 
@@ -20,6 +21,7 @@ namespace MailerService.Infrastructure
 
         public void ReturnJob(IJob job)
         {
+            (job as IDisposable)?.Dispose();
         }
     }
 }

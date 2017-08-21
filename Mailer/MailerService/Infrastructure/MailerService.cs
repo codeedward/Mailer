@@ -33,7 +33,7 @@ namespace MailerService.Infrastructure
         private void InitializeScheduler()
         {
             //TODO check if this IoC works well
-            _sched = new StdSchedulerFactory().GetScheduler(); //Bootstraper.Container.Resolve<IScheduler>();
+            _sched =  Bootstraper.Container.Resolve<IScheduler>();
             _sched.JobFactory = new UnityJobFactory(Bootstraper.Container);
 
             IJobDetail job = JobBuilder.Create<ProcessEmailsJob>()
