@@ -77,8 +77,6 @@
     <Compile Include="Infrastructure\MailerServiceConfiguration.cs" />
     <Compile Include="Infrastructure\ProcessEmailsJob.cs" />
     <Compile Include="Infrastructure\UnityJobFactory .cs" />
-    <Compile Include="Interfaces\IMailerService.cs" />
-    <Compile Include="Interfaces\IMailerServiceConfiguration.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,9 +91,21 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\MailerBllDto\MailerBllDto.csproj">
+      <Project>{c6ab35c1-e665-4499-903c-5989c09379cc}</Project>
+      <Name>MailerBllDto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
       <Project>{2ccbb105-310c-4921-b385-677784dd1895}</Project>
       <Name>MailerCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
+      <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
+      <Name>MailerCoreDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailerInterface\MailerInterface.csproj">
+      <Project>{c6181e55-1325-4e33-a6b7-8591de80f823}</Project>
+      <Name>MailerInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

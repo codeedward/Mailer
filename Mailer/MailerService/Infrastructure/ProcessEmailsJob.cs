@@ -2,10 +2,9 @@
 using System.IO;
 using System.Transactions;
 using MailerCommon.Helpers;
-using MailerCommon.Interfaces.Services;
+using MailerInterface.Services;
 using MailerService.Constants;
 using MailerService.Helpers;
-using Microsoft.Practices.Unity;
 using Quartz;
 
 namespace MailerService.Infrastructure

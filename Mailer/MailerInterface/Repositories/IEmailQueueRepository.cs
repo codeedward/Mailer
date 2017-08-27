@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using MailerCommon.Dto;
+using MailerBllDto;
 
-namespace MailerCommon.Interfaces.Repositories
+namespace MailerInterface.Repositories
 {
     public interface IEmailQueueRepository
     {

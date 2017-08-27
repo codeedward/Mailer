@@ -1,4 +1,4 @@
-﻿namespace MailerService.Interfaces
+﻿namespace MailerInterface.WindowsApplication
 {
     public interface IMailerService
     {

@@ -1,4 +1,4 @@
-﻿namespace MailerCommon.Dto
+﻿namespace MailerBllDto
 {
     public class EmailReceiverDto
     {

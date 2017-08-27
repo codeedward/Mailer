@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using MailerCommon.Dto;
+using MailerBllDto;
 using MailerCommon.Models;
 
-namespace MailerCommon.Interfaces.Services
+namespace MailerInterface.Services
 {
     //TODO GetEmailsToProcess will get everything (replacements & receivers) on one go through entity
     public interface IEmailQueueService

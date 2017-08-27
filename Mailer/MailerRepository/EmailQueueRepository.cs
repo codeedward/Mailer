@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MailerCommon.Dto;
-using MailerCommon.Interfaces.Repositories;
-using MailerCommon.Models;
+using MailerBllDto;
+using MailerInterface.Repositories;
 
-namespace MailerCommon.Repositories
+namespace MailerRepository
 {
     public class EmailQueueRepository : IEmailQueueRepository
     {

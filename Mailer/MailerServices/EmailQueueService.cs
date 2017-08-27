@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using MailerCommon.Dto;
+using MailerBllDto;
 using MailerCommon.Enums;
-using MailerCommon.Interfaces.Repositories;
-using MailerCommon.Interfaces.Services;
 using MailerCommon.Models;
+using MailerInterface.Repositories;
+using MailerInterface.Services;
 
-namespace MailerCommon.Services
+namespace MailerServices
 {
     public class EmailQueueService : IEmailQueueService
     {

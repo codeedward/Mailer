@@ -1,7 +1,4 @@
 ﻿using MailerCommon.Constants;
-using MailerCommon.Interfaces.Services;
-using Microsoft.Practices.Unity;
-using Quartz;
 using Topshelf;
 
 namespace MailerService.Infrastructure

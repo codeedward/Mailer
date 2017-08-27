@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using MailerCommon.Dto;
-
-namespace MailerCommon.Interfaces.Services
+﻿namespace MailerInterface.Services
 {
     public interface IEmailReplacementService
     {

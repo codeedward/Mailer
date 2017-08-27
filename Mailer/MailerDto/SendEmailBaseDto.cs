@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Mail;
 
-namespace MailerCommon.Dto
+namespace MailerDto
 {
     public abstract class SendEmailBaseDto
     {

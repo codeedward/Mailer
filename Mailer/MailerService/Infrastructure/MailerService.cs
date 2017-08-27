@@ -1,10 +1,8 @@
 ﻿using MailerCommon.Helpers;
+using MailerInterface.WindowsApplication;
 using MailerService.Constants;
-using MailerService.Interfaces;
 using Quartz;
-using Quartz.Impl;
 using Microsoft.Practices.Unity;
-using Quartz.Core;
 
 namespace MailerService.Infrastructure
 {

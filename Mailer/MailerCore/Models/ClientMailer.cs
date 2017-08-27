@@ -1,8 +1,7 @@
-﻿using System.Runtime.InteropServices.WindowsRuntime;
-using MailerCommon.Dto;
-using MailerCommon.Interfaces.Services;
+﻿using MailerBllDto;
 using MailerCommon.Models;
 using MailerCore.Interfaces;
+using MailerInterface.Services;
 
 namespace MailerCore.Models
 {

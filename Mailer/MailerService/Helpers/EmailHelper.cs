@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
-using MailerCommon.Dto;
+using MailerDto;
 
 namespace MailerService.Helpers
 {

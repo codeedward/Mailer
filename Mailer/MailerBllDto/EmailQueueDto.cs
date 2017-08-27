@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Mail;
 
-namespace MailerCommon.Dto
+namespace MailerBllDto
 {
     public class EmailQueueDto
     {
