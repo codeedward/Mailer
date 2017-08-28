@@ -29,7 +29,7 @@ namespace MailerCommon.Helpers
             }
             catch (Exception ex)
             {
-                //TODO log error
+                LogHelper.Error(ex);
             }
             return emailAddresses;
         }
@@ -61,7 +61,7 @@ namespace MailerCommon.Helpers
             }
             catch (Exception ex)
             {
-                //TODO log error
+                LogHelper.Error(ex);
                 return false;
             }
         }

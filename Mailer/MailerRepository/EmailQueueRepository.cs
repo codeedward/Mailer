@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using MailerBllDto;
 using MailerInterface.Repositories;
 
@@ -18,8 +19,24 @@ namespace MailerRepository
 
         public List<EmailQueueDto> GetEmailsToProcess()
         {
+            var emails = new List<EmailQueueDto>();
+            emails.Add(new EmailQueueDto()
+            {
+                EmailQueueId = 1,
+                EmailType = 1,
+                TriesLeft = 5,
+                AvailableToSendFromUtc = DateTime.Now,
+                From = new MailAddress("test@test.com"),
+                SubjectTemplate = "sth",
+                BodyTemplate = "sth",
+                Host = "123",
+                Port = 21,
+                Replacements = new List<EmailReplacementDto>(){new EmailReplacementDto(){ EmailReplacementId = 1, Value = "{TEST}", Token = "SOME_VALUE"}},
+                To = new List<MailAddress>() { new MailAddress("test@test.com")}
+            });
+            return emails;
+
             //TODO implement
-            throw new NotImplementedException();
             //Get emails:
             //- tires left
             //- available to send from utc
@@ -33,7 +50,8 @@ namespace MailerRepository
             //Save success:
             //- send date
             //- email status
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return false;
         }
 
         public bool MarkFailure(long emailQueueEmailQueueId, long intervalAfterFailSendingAttemptInSeconds)

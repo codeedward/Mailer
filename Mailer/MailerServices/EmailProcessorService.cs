@@ -22,10 +22,9 @@ namespace MailerServices
                 foreach (var emailQueue in emailsQueue)
                 {
                     var sendSuccess = false;
-                    bool markAsProcessed;
                     using (var trans = new TransactionScope())
                     {
-                        markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
+                        var markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
                         if (markAsProcessed)
                         {
                             sendSuccess = EmailProcessorHelper.Process(emailQueue);
@@ -35,7 +34,7 @@ namespace MailerServices
                             }
                         }
                     }
-                    if (!sendSuccess && markAsProcessed)
+                    if (!sendSuccess)
                     {
                         //TODO check out this configuration values
                         var intervalAfterFailSendingAttemptInSeconds = ConfigurationHelper.GetNumber(ConfigurationNames.IntervalAfterFailSendingAttemptInSeconds,

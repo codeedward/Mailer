@@ -50,6 +50,7 @@
     <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\EmailProcessorHelper.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Models\ClientMailerSendStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -31,11 +31,11 @@ namespace MailerService.Infrastructure
             _sched.JobFactory = new UnityJobFactory(Bootstraper.Container);
 
             IJobDetail job = JobBuilder.Create<ProcessEmailsJob>()
-                .WithIdentity("myJob", "group1")
+                .WithIdentity("ProcessEmailsJob", "ProcessEmailGroup")
                 .Build();
 
             ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("myTrigger", "group1")
+                .WithIdentity("ProcessEmailsTrigger", "ProcessEmailGroup")
                 .StartNow()
                 .WithSimpleSchedule(x => x
                     .WithIntervalInSeconds(ConfigurationHelper.GetNumber(ConfigurationNames.ProcessEmailsJobInterval,

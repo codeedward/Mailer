@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MailerBllDto;
 using MailerCommon.Enums;
+using MailerCommon.Helpers;
 using MailerCommon.Models;
 using MailerInterface.Repositories;
 using MailerInterface.Services;
@@ -26,7 +27,7 @@ namespace MailerServices
             }
             catch (Exception e)
             {
-                //TODO: Log error
+                LogHelper.Error(e);
                 return new ClientMailerSendStatus(StatusMailerSend.Error, e.Message);
             }
         }
@@ -40,7 +41,7 @@ namespace MailerServices
             }
             catch (Exception e)
             {
-                //TODO: Log error
+                LogHelper.Error(e);
                 return null;
             }
         }
@@ -54,7 +55,7 @@ namespace MailerServices
             }
             catch (Exception e)
             {
-                //TODO: Log error
+                LogHelper.Error(e);
                 return false;
             }
         }
@@ -68,7 +69,7 @@ namespace MailerServices
             }
             catch (Exception e)
             {
-                //TODO: Log error
+                LogHelper.Error(e);
                 return false;
             }
         }
