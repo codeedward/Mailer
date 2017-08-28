@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +50,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailMessage.cs">
+      <DependentUpon>Mailer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailQueue.cs">
+      <DependentUpon>Mailer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailReceiver.cs">
+      <DependentUpon>Mailer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailReplacement.cs">
+      <DependentUpon>Mailer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mailer.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mailer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mailer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mailer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mailer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mailer.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Mailer.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Mailer.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Mailer.edmx.diagram">
+      <DependentUpon>Mailer.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mailer.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mailer.edmx</DependentUpon>
+      <LastGenOutput>Mailer.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mailer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mailer.edmx</DependentUpon>
+      <LastGenOutput>Mailer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MailerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmailMessage">
+          <Key>
+            <PropertyRef Name="EmailMessageId" />
+          </Key>
+          <Property Name="EmailMessageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromPerson" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FromAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SubjectTemplate" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BodyTemplate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Port" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailQueue">
+          <Key>
+            <PropertyRef Name="EmailQueueId" />
+          </Key>
+          <Property Name="EmailQueueId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailMessageId" Type="bigint" Nullable="false" />
+          <Property Name="EmailReceiverId" Type="bigint" Nullable="false" />
+          <Property Name="EmailStatus" Type="tinyint" Nullable="false" />
+          <Property Name="EmailType" Type="int" Nullable="false" />
+          <Property Name="TriesLeft" Type="tinyint" Nullable="false" />
+          <Property Name="LastTryDateUtc" Type="datetime" />
+          <Property Name="LockedDateUtc" Type="datetime" />
+          <Property Name="AvailableToSendFromUtc" Type="datetime" />
+          <Property Name="SendDateUtc" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailReceiver">
+          <Key>
+            <PropertyRef Name="EmailReceiverId" />
+          </Key>
+          <Property Name="EmailReceiverId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailAddresType" Type="tinyint" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ToPerson" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailReplacement">
+          <Key>
+            <PropertyRef Name="EmailReplacementId" />
+          </Key>
+          <Property Name="EmailReplacementId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailQueueId" Type="bigint" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EmailQueue_EmailMessage">
+          <End Role="EmailMessage" Type="Self.EmailMessage" Multiplicity="1" />
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailMessage">
+              <PropertyRef Name="EmailMessageId" />
+            </Principal>
+            <Dependent Role="EmailQueue">
+              <PropertyRef Name="EmailMessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailQueue_EmailReceiver">
+          <End Role="EmailReceiver" Type="Self.EmailReceiver" Multiplicity="1" />
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailReceiver">
+              <PropertyRef Name="EmailReceiverId" />
+            </Principal>
+            <Dependent Role="EmailQueue">
+              <PropertyRef Name="EmailReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailReplacement_EmailQueue">
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="1" />
+          <End Role="EmailReplacement" Type="Self.EmailReplacement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailQueue">
+              <PropertyRef Name="EmailQueueId" />
+            </Principal>
+            <Dependent Role="EmailReplacement">
+              <PropertyRef Name="EmailQueueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MailerModelStoreContainer">
+          <EntitySet Name="EmailMessage" EntityType="Self.EmailMessage" Schema="Mailer" store:Type="Tables" />
+          <EntitySet Name="EmailQueue" EntityType="Self.EmailQueue" Schema="Mailer" store:Type="Tables" />
+          <EntitySet Name="EmailReceiver" EntityType="Self.EmailReceiver" Schema="Mailer" store:Type="Tables" />
+          <EntitySet Name="EmailReplacement" EntityType="Self.EmailReplacement" Schema="Mailer" store:Type="Tables" />
+          <AssociationSet Name="FK_EmailQueue_EmailMessage" Association="Self.FK_EmailQueue_EmailMessage">
+            <End Role="EmailMessage" EntitySet="EmailMessage" />
+            <End Role="EmailQueue" EntitySet="EmailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailQueue_EmailReceiver" Association="Self.FK_EmailQueue_EmailReceiver">
+            <End Role="EmailReceiver" EntitySet="EmailReceiver" />
+            <End Role="EmailQueue" EntitySet="EmailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailReplacement_EmailQueue" Association="Self.FK_EmailReplacement_EmailQueue">
+            <End Role="EmailQueue" EntitySet="EmailQueue" />
+            <End Role="EmailReplacement" EntitySet="EmailReplacement" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MailerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmailMessage">
+          <Key>
+            <PropertyRef Name="EmailMessageId" />
+          </Key>
+          <Property Name="EmailMessageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FromAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubjectTemplate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BodyTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Port" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmailQueues" Relationship="Self.FK_EmailQueue_EmailMessage" FromRole="EmailMessage" ToRole="EmailQueue" />
+        </EntityType>
+        <EntityType Name="EmailQueue">
+          <Key>
+            <PropertyRef Name="EmailQueueId" />
+          </Key>
+          <Property Name="EmailQueueId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailMessageId" Type="Int64" Nullable="false" />
+          <Property Name="EmailReceiverId" Type="Int64" Nullable="false" />
+          <Property Name="EmailStatus" Type="Byte" Nullable="false" />
+          <Property Name="EmailType" Type="Int32" Nullable="false" />
+          <Property Name="TriesLeft" Type="Byte" Nullable="false" />
+          <Property Name="LastTryDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockedDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="AvailableToSendFromUtc" Type="DateTime" Precision="3" />
+          <Property Name="SendDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EmailMessage" Relationship="Self.FK_EmailQueue_EmailMessage" FromRole="EmailQueue" ToRole="EmailMessage" />
+          <NavigationProperty Name="EmailReceiver" Relationship="Self.FK_EmailQueue_EmailReceiver" FromRole="EmailQueue" ToRole="EmailReceiver" />
+          <NavigationProperty Name="EmailReplacements" Relationship="Self.FK_EmailReplacement_EmailQueue" FromRole="EmailQueue" ToRole="EmailReplacement" />
+        </EntityType>
+        <EntityType Name="EmailReceiver">
+          <Key>
+            <PropertyRef Name="EmailReceiverId" />
+          </Key>
+          <Property Name="EmailReceiverId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddresType" Type="Byte" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EmailQueues" Relationship="Self.FK_EmailQueue_EmailReceiver" FromRole="EmailReceiver" ToRole="EmailQueue" />
+        </EntityType>
+        <EntityType Name="EmailReplacement">
+          <Key>
+            <PropertyRef Name="EmailReplacementId" />
+          </Key>
+          <Property Name="EmailReplacementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailQueueId" Type="Int64" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EmailQueue" Relationship="Self.FK_EmailReplacement_EmailQueue" FromRole="EmailReplacement" ToRole="EmailQueue" />
+        </EntityType>
+        <Association Name="FK_EmailQueue_EmailMessage">
+          <End Role="EmailMessage" Type="Self.EmailMessage" Multiplicity="1" />
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailMessage">
+              <PropertyRef Name="EmailMessageId" />
+            </Principal>
+            <Dependent Role="EmailQueue">
+              <PropertyRef Name="EmailMessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailQueue_EmailReceiver">
+          <End Role="EmailReceiver" Type="Self.EmailReceiver" Multiplicity="1" />
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailReceiver">
+              <PropertyRef Name="EmailReceiverId" />
+            </Principal>
+            <Dependent Role="EmailQueue">
+              <PropertyRef Name="EmailReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailReplacement_EmailQueue">
+          <End Role="EmailQueue" Type="Self.EmailQueue" Multiplicity="1" />
+          <End Role="EmailReplacement" Type="Self.EmailReplacement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailQueue">
+              <PropertyRef Name="EmailQueueId" />
+            </Principal>
+            <Dependent Role="EmailReplacement">
+              <PropertyRef Name="EmailQueueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MailerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmailMessages" EntityType="Self.EmailMessage" />
+          <EntitySet Name="EmailQueues" EntityType="Self.EmailQueue" />
+          <EntitySet Name="EmailReceivers" EntityType="Self.EmailReceiver" />
+          <EntitySet Name="EmailReplacements" EntityType="Self.EmailReplacement" />
+          <AssociationSet Name="FK_EmailQueue_EmailMessage" Association="Self.FK_EmailQueue_EmailMessage">
+            <End Role="EmailMessage" EntitySet="EmailMessages" />
+            <End Role="EmailQueue" EntitySet="EmailQueues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailQueue_EmailReceiver" Association="Self.FK_EmailQueue_EmailReceiver">
+            <End Role="EmailReceiver" EntitySet="EmailReceivers" />
+            <End Role="EmailQueue" EntitySet="EmailQueues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailReplacement_EmailQueue" Association="Self.FK_EmailReplacement_EmailQueue">
+            <End Role="EmailQueue" EntitySet="EmailQueues" />
+            <End Role="EmailReplacement" EntitySet="EmailReplacements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MailerModelStoreContainer" CdmEntityContainer="MailerEntities">
+          <EntitySetMapping Name="EmailMessages">
+            <EntityTypeMapping TypeName="MailerModel.EmailMessage">
+              <MappingFragment StoreEntitySet="EmailMessage">
+                <ScalarProperty Name="EmailMessageId" ColumnName="EmailMessageId" />
+                <ScalarProperty Name="FromPerson" ColumnName="FromPerson" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="SubjectTemplate" ColumnName="SubjectTemplate" />
+                <ScalarProperty Name="BodyTemplate" ColumnName="BodyTemplate" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailQueues">
+            <EntityTypeMapping TypeName="MailerModel.EmailQueue">
+              <MappingFragment StoreEntitySet="EmailQueue">
+                <ScalarProperty Name="EmailQueueId" ColumnName="EmailQueueId" />
+                <ScalarProperty Name="EmailMessageId" ColumnName="EmailMessageId" />
+                <ScalarProperty Name="EmailReceiverId" ColumnName="EmailReceiverId" />
+                <ScalarProperty Name="EmailStatus" ColumnName="EmailStatus" />
+                <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+                <ScalarProperty Name="TriesLeft" ColumnName="TriesLeft" />
+                <ScalarProperty Name="LastTryDateUtc" ColumnName="LastTryDateUtc" />
+                <ScalarProperty Name="LockedDateUtc" ColumnName="LockedDateUtc" />
+                <ScalarProperty Name="AvailableToSendFromUtc" ColumnName="AvailableToSendFromUtc" />
+                <ScalarProperty Name="SendDateUtc" ColumnName="SendDateUtc" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailReceivers">
+            <EntityTypeMapping TypeName="MailerModel.EmailReceiver">
+              <MappingFragment StoreEntitySet="EmailReceiver">
+                <ScalarProperty Name="EmailReceiverId" ColumnName="EmailReceiverId" />
+                <ScalarProperty Name="EmailAddresType" ColumnName="EmailAddresType" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ToPerson" ColumnName="ToPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailReplacements">
+            <EntityTypeMapping TypeName="MailerModel.EmailReplacement">
+              <MappingFragment StoreEntitySet="EmailReplacement">
+                <ScalarProperty Name="EmailReplacementId" ColumnName="EmailReplacementId" />
+                <ScalarProperty Name="EmailQueueId" ColumnName="EmailQueueId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
