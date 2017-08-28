@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +57,10 @@
       <Project>{C6AB35C1-E665-4499-903C-5989C09379CC}</Project>
       <Name>MailerBllDto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MailerDb\MailerDb.csproj">
+      <Project>{12f86e05-268b-4e11-9bf5-c557ea346f5c}</Project>
+      <Name>MailerDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
       <Name>MailerCoreDto</Name>
@@ -58,6 +69,10 @@
       <Project>{C6181E55-1325-4E33-A6B7-8591DE80F823}</Project>
       <Name>MailerInterface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

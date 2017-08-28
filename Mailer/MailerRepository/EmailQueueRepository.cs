@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mail;
 using MailerBllDto;
+using MailerDb;
 using MailerInterface.Repositories;
 
 namespace MailerRepository
@@ -34,6 +36,11 @@ namespace MailerRepository
                 Replacements = new List<EmailReplacementDto>(){new EmailReplacementDto(){ EmailReplacementId = 1, Value = "{TEST}", Token = "SOME_VALUE"}},
                 To = new List<MailAddress>() { new MailAddress("test@test.com")}
             });
+            
+
+            //TODO remove that test and implement correct logic
+            var test = new MailerEntities();
+            var testData = test.EmailQueues.ToList();
             return emails;
 
             //TODO implement
