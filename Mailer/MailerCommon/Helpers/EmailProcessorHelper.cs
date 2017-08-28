@@ -2,7 +2,7 @@
 using MailerBllDto;
 using MailerDto;
 
-namespace MailerService.Helpers
+namespace MailerCommon.Helpers
 {
     public class EmailProcessorHelper
     {

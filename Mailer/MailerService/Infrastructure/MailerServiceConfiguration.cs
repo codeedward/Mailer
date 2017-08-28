@@ -10,9 +10,9 @@ namespace MailerService.Infrastructure
             HostFactory.Run(configure =>
             {
                 configure.StartAutomatically();
-                configure.Service<MailerService>(service =>
+                configure.Service<MailerWindowsService>(service =>
                 {
-                    service.ConstructUsing(s => new MailerService());
+                    service.ConstructUsing(s => new MailerWindowsService());
                     service.WhenStarted(s => s.Start());
                     service.WhenStopped(s => s.Stop());
                 });

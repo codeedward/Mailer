@@ -1,16 +1,16 @@
-﻿using MailerCommon.Helpers;
+﻿using MailerCommon.Constants;
+using MailerCommon.Helpers;
 using MailerInterface.WindowsApplication;
-using MailerService.Constants;
 using Quartz;
 using Microsoft.Practices.Unity;
 
 namespace MailerService.Infrastructure
 {
-    public class MailerService : IMailerService
+    public class MailerWindowsService : IMailerService
     {
         private IScheduler _sched;
 
-        public MailerService()
+        public MailerWindowsService()
         {
             InitializeScheduler();
         }

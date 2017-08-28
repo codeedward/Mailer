@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Impl;
 

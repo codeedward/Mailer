@@ -69,14 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstraper.cs" />
-    <Compile Include="Constants\ConfigurationNames.cs" />
-    <Compile Include="Constants\ConfiguratoinDefaultValues.cs" />
-    <Compile Include="Helpers\EmailHelper.cs" />
-    <Compile Include="Helpers\EmailProcessorHelper.cs" />
-    <Compile Include="Infrastructure\MailerService.cs" />
+    <Compile Include="Infrastructure\MailerWindowsService.cs" />
     <Compile Include="Infrastructure\MailerServiceConfiguration.cs" />
     <Compile Include="Infrastructure\ProcessEmailsJob.cs" />
-    <Compile Include="Infrastructure\UnityJobFactory .cs" />
+    <Compile Include="UnityJobFactory .cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

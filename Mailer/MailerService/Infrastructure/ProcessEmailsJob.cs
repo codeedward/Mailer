@@ -1,21 +1,17 @@
 ﻿using System;
 using System.IO;
-using System.Transactions;
-using MailerCommon.Helpers;
 using MailerInterface.Services;
-using MailerService.Constants;
-using MailerService.Helpers;
 using Quartz;
 
 namespace MailerService.Infrastructure
 {
     public class ProcessEmailsJob : IJob
     {
-        private readonly IEmailQueueService _emailQueueService;
+        private readonly IEmailProcessorService _emailProcessorService;
 
-        public ProcessEmailsJob(IEmailQueueService emailQueueService)
+        public ProcessEmailsJob(IEmailProcessorService emailProcessorService)
         {
-            _emailQueueService = emailQueueService;
+            _emailProcessorService = emailProcessorService;
         }
 
         public void Execute(IJobExecutionContext context)
@@ -25,33 +21,7 @@ namespace MailerService.Infrastructure
 
         public void Process()
         {
-            var emailsQueue = _emailQueueService.GetEmailsToProcess();
-            if (emailsQueue != null)
-            {
-                foreach (var emailQueue in emailsQueue)
-                {
-                    var sendSuccess = false;
-                    bool markAsProcessed;
-                    using (var trans = new TransactionScope())
-                    {
-                        markAsProcessed = _emailQueueService.MarkAsProcessed(emailQueue.EmailQueueId);
-                        if (markAsProcessed)
-                        {
-                            sendSuccess = EmailProcessorHelper.Process(emailQueue);
-                            if (sendSuccess)
-                            {
-                                trans.Complete();
-                            }
-                        }
-                    }
-                    if (!sendSuccess && markAsProcessed)
-                    {
-                        var intervalAfterFailSendingAttemptInSeconds = ConfigurationHelper.GetNumber(ConfigurationNames.IntervalAfterFailSendingAttemptInSeconds,
-                            ConfiguratoinDefaultValues.IntervalAfterFailSendingAttemptInSeconds);
-                        _emailQueueService.MarkFailure(emailQueue.EmailQueueId, intervalAfterFailSendingAttemptInSeconds);
-                    }
-                } 
-            }
+           _emailProcessorService.Process();
         }
         public void ProcessTest(string stage = "Continue")
         {

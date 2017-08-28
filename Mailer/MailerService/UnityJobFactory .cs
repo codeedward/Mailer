@@ -3,7 +3,7 @@ using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Spi;
 
-namespace MailerService.Infrastructure
+namespace MailerService
 {
     public class UnityJobFactory : IJobFactory
     {

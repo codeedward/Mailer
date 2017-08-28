@@ -42,13 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ConfigurationNames.cs" />
+    <Compile Include="Constants\ConfiguratoinDefaultValues.cs" />
     <Compile Include="Constants\ServiceNames.cs" />
     <Compile Include="Enums\EmailQueueStatus.cs" />
     <Compile Include="Enums\StatusMailerSend.cs" />
     <Compile Include="Helpers\ConfigurationHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\EmailProcessorHelper.cs" />
     <Compile Include="Models\ClientMailerSendStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MailerBllDto\MailerBllDto.csproj">
+      <Project>{C6AB35C1-E665-4499-903C-5989C09379CC}</Project>
+      <Name>MailerBllDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
+      <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
+      <Name>MailerCoreDto</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
