@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace MailerCommon.Helpers
+namespace MailerUtilities.Helpers
 {
     public static class ConfigurationHelper
     {

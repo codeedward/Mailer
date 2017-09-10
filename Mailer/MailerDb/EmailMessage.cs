@@ -21,8 +21,8 @@ namespace MailerDb
         }
     
         public long EmailMessageId { get; set; }
-        public string FromPerson { get; set; }
         public string FromAddress { get; set; }
+        public string FromPerson { get; set; }
         public string SubjectTemplate { get; set; }
         public string BodyTemplate { get; set; }
         public string Host { get; set; }

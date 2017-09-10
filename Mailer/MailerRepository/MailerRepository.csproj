@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,11 +52,16 @@
     <Compile Include="EmailQueueRepository.cs" />
     <Compile Include="EmailReplacementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MailerBllDto\MailerBllDto.csproj">
       <Project>{C6AB35C1-E665-4499-903C-5989C09379CC}</Project>
       <Name>MailerBllDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+      <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
+      <Name>MailerCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\MailerDb\MailerDb.csproj">
       <Project>{12f86e05-268b-4e11-9bf5-c557ea346f5c}</Project>

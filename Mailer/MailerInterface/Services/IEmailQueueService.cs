@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using MailerBllDto;
 using MailerCommon.Models;
+using MailerDto;
 
 namespace MailerInterface.Services
 {
-    //TODO GetEmailsToProcess will get everything (replacements & receivers) on one go through entity
     public interface IEmailQueueService
     {
-        ClientMailerSendStatus Save(EmailQueueDto emailQueue);
+        ClientMailerSendStatus Save(CoreEmailDto emailQueue);
         List<EmailQueueDto> GetEmailsToProcess();
         bool MarkAsProcessed(long emailQueueId);
         bool MarkFailure(long emailQueue, int intervalAfterFailSendingAttemptInSeconds);

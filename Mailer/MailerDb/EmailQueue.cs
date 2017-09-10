@@ -22,7 +22,6 @@ namespace MailerDb
     
         public long EmailQueueId { get; set; }
         public long EmailMessageId { get; set; }
-        public long EmailReceiverId { get; set; }
         public byte EmailStatus { get; set; }
         public int EmailType { get; set; }
         public byte TriesLeft { get; set; }
@@ -32,9 +31,10 @@ namespace MailerDb
         public Nullable<System.DateTime> SendDateUtc { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
+        public string ToEmailAddress { get; set; }
+        public string ToPerson { get; set; }
     
         public virtual EmailMessage EmailMessage { get; set; }
-        public virtual EmailReceiver EmailReceiver { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmailReplacement> EmailReplacements { get; set; }
     }

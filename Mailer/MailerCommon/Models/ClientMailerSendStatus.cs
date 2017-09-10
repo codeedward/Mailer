@@ -1,4 +1,5 @@
-﻿using MailerCommon.Enums;
+﻿using System.Collections.Generic;
+using MailerCommon.Enums;
 
 namespace MailerCommon.Models
 {
@@ -6,12 +7,12 @@ namespace MailerCommon.Models
     {
         public StatusMailerSend Status { get; set; }
         public string ErrorMessage { get; set; }
-        public long MailId { get; set; }
+        public List<long> MailIds { get; set; }
 
-        public ClientMailerSendStatus(StatusMailerSend status, long mailId)
+        public ClientMailerSendStatus(StatusMailerSend status, List<long> mailIds)
         {
             Status = status;
-            MailId = mailId;
+            MailIds = mailIds;
         }
 
         public ClientMailerSendStatus(StatusMailerSend status, string errorMessage)

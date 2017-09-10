@@ -56,9 +56,6 @@
     <Compile Include="EmailQueue.cs">
       <DependentUpon>Mailer.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmailReceiver.cs">
-      <DependentUpon>Mailer.tt</DependentUpon>
-    </Compile>
     <Compile Include="EmailReplacement.cs">
       <DependentUpon>Mailer.tt</DependentUpon>
     </Compile>

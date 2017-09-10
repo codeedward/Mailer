@@ -118,6 +118,10 @@
       <Project>{101359D1-54A3-48F9-8125-F2D0702829DC}</Project>
       <Name>MailerService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MailerUtilities\MailerUtilities.csproj">
+      <Project>{78D45351-ED35-4329-A702-9EF811EC25BA}</Project>
+      <Name>MailerUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

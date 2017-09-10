@@ -1,6 +1,6 @@
 ﻿using MailerCommon.Constants;
-using MailerCommon.Helpers;
 using MailerInterface.WindowsApplication;
+using MailerUtilities.Helpers;
 using Quartz;
 using Microsoft.Practices.Unity;
 

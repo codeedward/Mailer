@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreEmailDto.cs" />
+    <Compile Include="CoreEmailReplacementDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendComplexEmailDto.cs" />
-    <Compile Include="SendEmailBaseDto.cs" />
-    <Compile Include="SendSimpleEmailDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+      <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
+      <Name>MailerCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

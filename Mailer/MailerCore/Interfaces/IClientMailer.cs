@@ -1,10 +1,10 @@
-﻿using MailerBllDto;
-using MailerCommon.Models;
+﻿using MailerCommon.Models;
+using MailerDto;
 
 namespace MailerCore.Interfaces
 {
     public interface IClientMailer
     {
-        ClientMailerSendStatus Send(EmailQueueDto clientMailerSendDto);
+        ClientMailerSendStatus Send(CoreEmailDto clientMailerSendDto);
     }
 }

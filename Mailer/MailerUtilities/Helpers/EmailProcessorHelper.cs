@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using MailerBllDto;
+using MailerCommon.Dto;
 using MailerDto;
 
-namespace MailerCommon.Helpers
+namespace MailerUtilities.Helpers
 {
     public class EmailProcessorHelper
     {
@@ -10,7 +11,7 @@ namespace MailerCommon.Helpers
         {
             var readySubject = ReplaceReplacements(emailQueue.SubjectTemplate, emailQueue.Replacements);
             var readyBody = ReplaceReplacements(emailQueue.BodyTemplate, emailQueue.Replacements);
-            var sendEmailDto = new SendComplexEmailDto(emailQueue.To, emailQueue.Cc, emailQueue.Bcc, emailQueue.From, readyBody, readySubject, emailQueue.Host, emailQueue.Port);
+            var sendEmailDto = new SendEmailDto(emailQueue.From, emailQueue.To, readyBody, readySubject, emailQueue.Host, emailQueue.Port);
             return EmailHelper.SendEmail(sendEmailDto);
         }
 

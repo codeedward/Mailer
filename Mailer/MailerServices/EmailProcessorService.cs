@@ -1,7 +1,7 @@
-﻿using MailerCommon.Helpers;
-using MailerInterface.Services;
+﻿using MailerInterface.Services;
 using System.Transactions;
 using MailerCommon.Constants;
+using MailerUtilities.Helpers;
 
 namespace MailerServices
 {

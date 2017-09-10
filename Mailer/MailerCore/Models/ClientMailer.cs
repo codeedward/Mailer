@@ -1,6 +1,6 @@
-﻿using MailerBllDto;
-using MailerCommon.Models;
+﻿using MailerCommon.Models;
 using MailerCore.Interfaces;
+using MailerDto;
 using MailerInterface.Services;
 
 namespace MailerCore.Models
@@ -14,7 +14,7 @@ namespace MailerCore.Models
             _emailQueueService = emailQueueService;
         }
 
-        public ClientMailerSendStatus Send(EmailQueueDto clientMailerSendDto)
+        public ClientMailerSendStatus Send(CoreEmailDto clientMailerSendDto)
         {
             return _emailQueueService.Save(clientMailerSendDto);
         }

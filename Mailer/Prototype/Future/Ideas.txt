@@ -1,0 +1,3 @@
+1. Add processing images
+2. Add attachements
+3. Consider to replace with multi sending messages

@@ -27,7 +27,6 @@ namespace MailerDb
     
         public virtual DbSet<EmailMessage> EmailMessages { get; set; }
         public virtual DbSet<EmailQueue> EmailQueues { get; set; }
-        public virtual DbSet<EmailReceiver> EmailReceivers { get; set; }
         public virtual DbSet<EmailReplacement> EmailReplacements { get; set; }
     }
 }

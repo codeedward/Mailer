@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Future\Ideas.txt" />
     <Content Include="MultiEmails\DbDiagram.PNG" />
     <Content Include="MultiEmails\MultiEmailsDbScript.sql" />
   </ItemGroup>

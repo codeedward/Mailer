@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prototypes", "Prototypes", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailerUtilities", "MailerUtilities\MailerUtilities.csproj", "{78D45351-ED35-4329-A702-9EF811EC25BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78D45351-ED35-4329-A702-9EF811EC25BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D45351-ED35-4329-A702-9EF811EC25BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D45351-ED35-4329-A702-9EF811EC25BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D45351-ED35-4329-A702-9EF811EC25BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,5 +102,6 @@ Global
 		{4DDE4D57-2D2D-4041-87FF-1000722D5B00} = {502E2238-B034-4FA1-80D3-649D72A578D6}
 		{C6AB35C1-E665-4499-903C-5989C09379CC} = {502E2238-B034-4FA1-80D3-649D72A578D6}
 		{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00} = {CFEFB37F-979D-40ED-ADDA-FB663A2C13F3}
+		{78D45351-ED35-4329-A702-9EF811EC25BA} = {4CA5D615-109C-46CA-9385-80D10A0BA6C8}
 	EndGlobalSection
 EndGlobal

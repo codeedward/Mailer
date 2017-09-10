@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using MailerCommon.Models;
 
-namespace MailerBllDto
+namespace MailerDto
 {
-    public class EmailQueueDto
+    public class CoreEmailDto
     {
-        public long EmailQueueId { get; set; }
         public int EmailType { get; set; }
         public byte TriesLeft { get; set; }
         public DateTime? AvailableToSendFromUtc { get; set; }
@@ -15,7 +14,7 @@ namespace MailerBllDto
         public string BodyTemplate { get; set; }
         public string Host { get; set; }
         public int Port { get; set; }
-        public List<EmailReplacementDto> Replacements { get; set; }
-        public EmailRecipient To { get; set; }
+        public List<CoreEmailReplacementDto> Replacements { get; set; }
+        public List<EmailRecipient> To { get; set; }
     }
 }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using MailerBllDto;
 using MailerCommon.Enums;
-using MailerCommon.Helpers;
 using MailerCommon.Models;
+using MailerDto;
 using MailerInterface.Repositories;
 using MailerInterface.Services;
+using MailerUtilities.Helpers;
 
 namespace MailerServices
 {
@@ -18,7 +19,7 @@ namespace MailerServices
             _emailQueueRepository = emailQueueRepository;
         }
 
-        public ClientMailerSendStatus Save(EmailQueueDto emailQueueDto)
+        public ClientMailerSendStatus Save(CoreEmailDto emailQueueDto)
         {
             try
             {
