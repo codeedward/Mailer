@@ -28,7 +28,10 @@ namespace MailerRepository
                     Port = emailQueueDto.Port
                 };
 
-                var newEmailMessageId = MailerContext.EmailMessages.Add(emailMessage).EmailMessageId;
+                MailerContext.EmailMessages.Add(emailMessage);
+                MailerContext.SaveChanges();
+
+                var newEmailMessageId = emailMessage.EmailMessageId;
                 foreach (var receiverMail in emailQueueDto.To)
                 {
                     var emailQueue = new EmailQueue
@@ -56,9 +59,12 @@ namespace MailerRepository
                     }
                     replacements.ForEach(x=> emailQueue.EmailReplacements.Add(x));
 
-                    var newEmailQueueId = MailerContext.EmailQueues.Add(emailQueue).EmailQueueId;
-                    savedEmailIds.Add(newEmailQueueId);
+                    MailerContext.EmailQueues.Add(emailQueue);
+                    MailerContext.SaveChanges();
+
+                    savedEmailIds.Add(emailQueue.EmailQueueId);
                 }
+                
                 trans.Complete();
             }
 

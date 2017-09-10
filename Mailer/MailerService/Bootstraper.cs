@@ -1,7 +1,5 @@
 ﻿using MailerInterface.Repositories;
-using MailerInterface.Services;
 using MailerRepository;
-using MailerServices;
 using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Impl;
