@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using MailerCommon.Dto;
-using MailerDto;
 
 namespace MailerUtilities.Helpers
 {
@@ -11,62 +8,36 @@ namespace MailerUtilities.Helpers
     {
         public static bool SendEmail(SendEmailDto sendEmailDto)
         {
-            //var mailTo = AddMailAddressToCollection(new List<MailAddress>(), sendEmailDto.ToAddress);
-            //var complexMailDto = new SendComplexEmailDto(mailTo, null, null, sendEmailDto);
-
-            //return DoSend(complexMailDto);
-            return true;
+            return DoSend(sendEmailDto);
         }
 
-        //public static bool SendEmail(SendComplexEmailDto sendEmailDto)
-        //{
-        //    return DoSend(sendEmailDto);
-        //}
+        #region Private methods
+        private static bool DoSend(SendEmailDto sendEmailDto)
+        {
+            try
+            {
+                var message = new MailMessage
+                {
+                    IsBodyHtml = true,
+                    From = new MailAddress(sendEmailDto.FromAddress.EmailAddress, sendEmailDto.FromAddress.DisplayName),
+                    Subject = sendEmailDto.Subject,
+                    Body = sendEmailDto.MessageBody
+                };
 
-        //public static List<MailAddress> AddMailAddressToCollection(List<MailAddress> emailAddresses, string email, string displayName = "")
-        //{
-        //    try
-        //    {
-        //        emailAddresses.Add(new MailAddress(email, displayName));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogHelper.Error(ex);
-        //    }
-        //    return emailAddresses;
-        //}
-
-        //#region Private methods
-
-        //private static bool DoSend(SendComplexEmailDto complexEmailDto)
-        //{
-        //    try
-        //    {
-        //        var message = new MailMessage
-        //        {
-        //            IsBodyHtml = true,
-        //            From = complexEmailDto.FromAddress,
-        //            Subject = complexEmailDto.Subject,
-        //            Body = complexEmailDto.MessageBody
-        //        };
-
-        //        var emptyAddressList = new List<MailAddress>();
-        //        message.To.ToList().AddRange(complexEmailDto.ToAddress ?? emptyAddressList);
-        //        message.CC.ToList().AddRange(complexEmailDto.ToAddressCc ?? emptyAddressList);
-        //        message.Bcc.ToList().AddRange(complexEmailDto.ToAddressBcc ?? emptyAddressList);
-
-        //        using (var smtpClient = new SmtpClient(complexEmailDto.Host, complexEmailDto.Port))
-        //        {
-        //            smtpClient.Send(message);
-        //        }
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogHelper.Error(ex);
-        //        return false;
-        //    }
-        //}
-        //#endregion
+                using (var smtpClient = new SmtpClient(sendEmailDto.Host, sendEmailDto.Port))
+                {
+                    message.To.Add(new MailAddress(sendEmailDto.ToAddress.EmailAddress, sendEmailDto.ToAddress.DisplayName));
+                    smtpClient.Send(message);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return false;
+            }
+        
+        }
+        #endregion 
     }
 }
