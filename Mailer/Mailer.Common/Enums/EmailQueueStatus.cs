@@ -2,7 +2,7 @@
 {
     public enum EmailQueueStatus
     {
-        Unprocess = 1,
+        Unprocessed = 1,
         Processed = 2,
         Error = 3
     }

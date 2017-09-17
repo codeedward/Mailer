@@ -5,6 +5,7 @@ using Mailer.DAL.Db;
 using Mailer.Domain.Core;
 using Mailer.Domain.WS;
 using System.Linq;
+using Mailer.Common.Enums;
 using Mailer.Common.Models;
 using Mailer.Repository.Interface;
 
@@ -37,7 +38,7 @@ namespace Mailer.DAL.Repository
                     var emailQueue = new EmailQueue
                     {
                         EmailMessageId = newEmailMessageId,
-                        EmailStatus = 1,  // TODO status ready to process
+                        EmailStatus = (byte) EmailQueueStatus.Unprocessed, 
                         EmailType = emailQueueDto.EmailType,
                         TriesLeft = emailQueueDto.TriesLeft,
                         AvailableToSendFromUtc = DateTime.UtcNow,
@@ -82,7 +83,7 @@ namespace Mailer.DAL.Repository
                 join replacement in MailerContext.EmailReplacements on emailQueue.EmailQueueId equals replacement.EmailQueueId
                     into replacementsForEmail
                 where
-                emailQueue.EmailStatus == 2
+                emailQueue.EmailStatus == (byte) EmailQueueStatus.Unprocessed
                 && emailQueue.AvailableToSendFromUtc.Value < DateTime.UtcNow.Date
                 orderby emailQueue.CreatedOn
                 select new
@@ -126,7 +127,7 @@ namespace Mailer.DAL.Repository
             var emailQueue = new EmailQueue()
             {
                 EmailQueueId = emailQueueId,
-                EmailStatus = 2, //todo processed status
+                EmailStatus = (byte) EmailQueueStatus.Processed,
                 SendDateUtc = DateTime.UtcNow,
                 LastTryDateUtc = DateTime.UtcNow,
 
@@ -152,7 +153,7 @@ namespace Mailer.DAL.Repository
                 }
                 else
                 {
-                    item.EmailStatus = 3; //TODO error status
+                    item.EmailStatus = (byte) EmailQueueStatus.Error;
                 }
             }
             return MailerContext.SaveChanges() > 0;
