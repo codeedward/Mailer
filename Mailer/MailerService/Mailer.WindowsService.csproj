@@ -94,33 +94,33 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\MailerBllDto\MailerBllDto.csproj">
+    <ProjectReference Include="..\MailerBllDto\Mailer.WS.Dto.csproj">
       <Project>{c6ab35c1-e665-4499-903c-5989c09379cc}</Project>
-      <Name>MailerBllDto</Name>
+      <Name>Mailer.WS.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+    <ProjectReference Include="..\MailerCommon\Mailer.Common.csproj">
       <Project>{2ccbb105-310c-4921-b385-677784dd1895}</Project>
-      <Name>MailerCommon</Name>
+      <Name>Mailer.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
+    <ProjectReference Include="..\MailerDto\Mailer.Core.Dto.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
-      <Name>MailerCoreDto</Name>
+      <Name>Mailer.Core.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerInterface\MailerInterface.csproj">
+    <ProjectReference Include="..\MailerInterface\Mailer.Interface.csproj">
       <Project>{c6181e55-1325-4e33-a6b7-8591de80f823}</Project>
-      <Name>MailerInterface</Name>
+      <Name>Mailer.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerRepository\MailerRepository.csproj">
+    <ProjectReference Include="..\MailerRepository\Mailer.Repository.csproj">
       <Project>{EBE4C6BE-3549-41AA-A6D7-4A02818C10E2}</Project>
-      <Name>MailerRepository</Name>
+      <Name>Mailer.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerServices\MailerService.csproj">
+    <ProjectReference Include="..\MailerServices\Mailer.Service.csproj">
       <Project>{101359D1-54A3-48F9-8125-F2D0702829DC}</Project>
-      <Name>MailerService</Name>
+      <Name>Mailer.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerUtilities\MailerUtilities.csproj">
+    <ProjectReference Include="..\MailerUtilities\Mailer.Utilities.csproj">
       <Project>{78D45351-ED35-4329-A702-9EF811EC25BA}</Project>
-      <Name>MailerUtilities</Name>
+      <Name>Mailer.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,17 +49,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MailerBllDto\MailerBllDto.csproj">
+    <ProjectReference Include="..\MailerBllDto\Mailer.WS.Dto.csproj">
       <Project>{C6AB35C1-E665-4499-903C-5989C09379CC}</Project>
-      <Name>MailerBllDto</Name>
+      <Name>Mailer.WS.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+    <ProjectReference Include="..\MailerCommon\Mailer.Common.csproj">
       <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
-      <Name>MailerCommon</Name>
+      <Name>Mailer.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
+    <ProjectReference Include="..\MailerDto\Mailer.Core.Dto.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
-      <Name>MailerCoreDto</Name>
+      <Name>Mailer.Core.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

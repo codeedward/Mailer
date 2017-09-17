@@ -63,29 +63,29 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MailerCommon\MailerCommon.csproj">
+    <ProjectReference Include="..\MailerCommon\Mailer.Common.csproj">
       <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
-      <Name>MailerCommon</Name>
+      <Name>Mailer.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerCore\MailerCore.csproj">
+    <ProjectReference Include="..\MailerCore\Mailer.Core.csproj">
       <Project>{4eec0287-5b89-497c-8be7-afb77e589aca}</Project>
-      <Name>MailerCore</Name>
+      <Name>Mailer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerDto\MailerCoreDto.csproj">
+    <ProjectReference Include="..\MailerDto\Mailer.Core.Dto.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
-      <Name>MailerCoreDto</Name>
+      <Name>Mailer.Core.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerInterface\MailerInterface.csproj">
+    <ProjectReference Include="..\MailerInterface\Mailer.Interface.csproj">
       <Project>{c6181e55-1325-4e33-a6b7-8591de80f823}</Project>
-      <Name>MailerInterface</Name>
+      <Name>Mailer.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerRepository\MailerRepository.csproj">
+    <ProjectReference Include="..\MailerRepository\Mailer.Repository.csproj">
       <Project>{EBE4C6BE-3549-41AA-A6D7-4A02818C10E2}</Project>
-      <Name>MailerRepository</Name>
+      <Name>Mailer.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MailerServices\MailerService.csproj">
+    <ProjectReference Include="..\MailerServices\Mailer.Service.csproj">
       <Project>{101359D1-54A3-48F9-8125-F2D0702829DC}</Project>
-      <Name>MailerService</Name>
+      <Name>Mailer.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

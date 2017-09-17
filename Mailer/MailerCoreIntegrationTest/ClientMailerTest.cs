@@ -21,7 +21,7 @@ namespace MailerCoreIntegrationTest
                     new EmailQueueRepository()
                 )
             );
-
+            
             clientMailer.Send(
                 new CoreEmailDto()
                 {
