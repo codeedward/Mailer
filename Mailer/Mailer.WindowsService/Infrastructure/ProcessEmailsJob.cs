@@ -5,6 +5,7 @@ using Quartz;
 
 namespace Mailer.WindowsService.Infrastructure
 {
+    [DisallowConcurrentExecution]
     public class ProcessEmailsJob : IJob
     {
         private readonly IEmailProcessorService _emailProcessorService;
