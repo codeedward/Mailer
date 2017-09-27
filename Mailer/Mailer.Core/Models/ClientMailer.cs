@@ -7,9 +7,9 @@ namespace Mailer.Core.Models
 {
     public class ClientMailer : IClientMailer
     {
-        private readonly IEmailQueueService _emailQueueService;
+        private readonly IEmailQueueServiceCore _emailQueueService;
 
-        public ClientMailer(IEmailQueueService emailQueueService)
+        public ClientMailer(IEmailQueueServiceCore emailQueueService)
         {
             _emailQueueService = emailQueueService;
         }

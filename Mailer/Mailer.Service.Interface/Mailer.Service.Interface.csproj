@@ -43,7 +43,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IEmailProcessorService.cs" />
-    <Compile Include="Services\IEmailQueueService.cs" />
+    <Compile Include="Services\IEmailQueueServiceCore.cs" />
+    <Compile Include="Services\IEmailQueueServiceWs.cs" />
     <Compile Include="Services\IEmailReceiverService.cs" />
     <Compile Include="Services\IEmailReplacementService.cs" />
     <Compile Include="WindowsApplication\IMailerService.cs" />
