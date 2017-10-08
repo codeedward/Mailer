@@ -1,7 +1,7 @@
 ﻿using Mailer.DAL.Repository;
 using Mailer.Repository.Interface;
 using Mailer.Service.Interface.Services;
-using Mailer.Services;
+using Mailer.Service.WS;
 using Mailer.WindowsService.Infrastructure;
 using Microsoft.Practices.Unity;
 using Quartz;
@@ -27,6 +27,7 @@ namespace Mailer.WindowsService
 
             container.RegisterType<IEmailQueueRepository, EmailQueueRepository>(); 
             container.RegisterType<IEmailProcessorService, EmailProcessorService>(); 
+            container.RegisterType<IEmailQueueServiceWs, EmailQueueServiceWs>(); 
             container.RegisterType<IScheduler>(new InjectionFactory(c => new StdSchedulerFactory().GetScheduler()));
         }
     }

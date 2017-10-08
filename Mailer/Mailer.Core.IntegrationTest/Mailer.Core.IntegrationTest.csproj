@@ -83,13 +83,13 @@
       <Project>{09e73f61-fb46-497d-b068-12c8da13af64}</Project>
       <Name>Mailer.Repository.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mailer.Service.Core\Mailer.Service.Core.csproj">
+      <Project>{22423f27-d00c-41e3-9f95-037fa3dc1969}</Project>
+      <Name>Mailer.Service.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mailer.Service.Interface\Mailer.Service.Interface.csproj">
       <Project>{648d81e3-be00-4cf0-8340-0d736137719e}</Project>
       <Name>Mailer.Service.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mailer.Services\Mailer.Service.csproj">
-      <Project>{101359D1-54A3-48F9-8125-F2D0702829DC}</Project>
-      <Name>Mailer.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

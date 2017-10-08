@@ -3,7 +3,7 @@ using Mailer.Common.Constants;
 using Mailer.Service.Interface.Services;
 using Mailer.Utilities.Helpers;
 
-namespace Mailer.Services
+namespace Mailer.Service.WS
 {
     public class EmailProcessorService : IEmailProcessorService
     {

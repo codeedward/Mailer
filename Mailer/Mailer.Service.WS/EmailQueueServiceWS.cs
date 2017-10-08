@@ -1,36 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Mailer.Common.Enums;
-using Mailer.Common.Models;
-using Mailer.Domain.Core;
 using Mailer.Domain.WS;
 using Mailer.Repository.Interface;
 using Mailer.Service.Interface.Services;
 using Mailer.Utilities.Helpers;
 
-namespace Mailer.Services
+namespace Mailer.Service.WS
 {
-    public class EmailQueueService : IEmailQueueServiceWs, IEmailQueueServiceCore
+    public class EmailQueueServiceWs : IEmailQueueServiceWs
     {
         private readonly IEmailQueueRepository _emailQueueRepository;
 
-        public EmailQueueService(IEmailQueueRepository emailQueueRepository)
+        public EmailQueueServiceWs(IEmailQueueRepository emailQueueRepository)
         {
             _emailQueueRepository = emailQueueRepository;
-        }
-
-        public ClientMailerSendStatus Save(CoreEmailDto emailQueueDto)
-        {
-            try
-            {
-                var id = _emailQueueRepository.Save(emailQueueDto);
-                return new ClientMailerSendStatus(StatusMailerSend.Ok, id);
-            }
-            catch (Exception e)
-            {
-                LogHelper.Error(e);
-                return new ClientMailerSendStatus(StatusMailerSend.Error, e.Message);
-            }
         }
 
         public List<EmailQueueDto> GetEmailsToProcess()

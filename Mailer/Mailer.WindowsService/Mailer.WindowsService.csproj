@@ -110,9 +110,9 @@
       <Project>{648D81E3-BE00-4CF0-8340-0D736137719E}</Project>
       <Name>Mailer.Service.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Services\Mailer.Service.csproj">
-      <Project>{101359D1-54A3-48F9-8125-F2D0702829DC}</Project>
-      <Name>Mailer.Service</Name>
+    <ProjectReference Include="..\Mailer.Service.WS\Mailer.Service.WS.csproj">
+      <Project>{B1F56D0B-C68A-48FE-BFDF-7DA085C8F300}</Project>
+      <Name>Mailer.Service.WS</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mailer.Utilities\Mailer.Utilities.csproj">
       <Project>{78D45351-ED35-4329-A702-9EF811EC25BA}</Project>

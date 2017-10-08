@@ -4,7 +4,7 @@ using Mailer.Common.Models;
 using Mailer.Core.Models;
 using Mailer.DAL.Repository;
 using Mailer.Domain.Core;
-using Mailer.Services;
+using Mailer.Service.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Mailer.Core.IntegrationTest
@@ -16,7 +16,7 @@ namespace Mailer.Core.IntegrationTest
         public void SaveEmailTest()
         {
             var clientMailer = new ClientMailer(
-                new EmailQueueService(
+                new EmailQueueServiceCore(
                     new EmailQueueRepository()
                 )
             );

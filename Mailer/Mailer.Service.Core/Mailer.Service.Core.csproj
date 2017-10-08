@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DDBD19B4-FAD8-4BA6-92C6-84AE555D2C00}</ProjectGuid>
+    <ProjectGuid>{22423F27-D00C-41E3-9F95-037FA3DC1969}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Prototype</RootNamespace>
-    <AssemblyName>Prototype</AssemblyName>
+    <RootNamespace>Mailer.Service.Core</RootNamespace>
+    <AssemblyName>Mailer.Service.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,15 +40,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailQueueServiceCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Future\Ideas.txt" />
-    <Content Include="MultiEmails\DbDiagram.PNG" />
-    <Content Include="MultiEmails\MultiEmailsDbScript.sql" />
-    <Content Include="SingleEmail\SingleEmailDbDiagram.PNG" />
-    <Content Include="SingleEmail\SingleEmailDbScript.sql" />
+    <ProjectReference Include="..\Mailer.Common\Mailer.Common.csproj">
+      <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
+      <Name>Mailer.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Domain.Core\Mailer.Domain.Core.csproj">
+      <Project>{4dde4d57-2d2d-4041-87ff-1000722d5b00}</Project>
+      <Name>Mailer.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Repository.Interface\Mailer.Repository.Interface.csproj">
+      <Project>{09E73F61-FB46-497D-B068-12C8DA13AF64}</Project>
+      <Name>Mailer.Repository.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Service.Interface\Mailer.Service.Interface.csproj">
+      <Project>{648D81E3-BE00-4CF0-8340-0D736137719E}</Project>
+      <Name>Mailer.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Utilities\Mailer.Utilities.csproj">
+      <Project>{78D45351-ED35-4329-A702-9EF811EC25BA}</Project>
+      <Name>Mailer.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
