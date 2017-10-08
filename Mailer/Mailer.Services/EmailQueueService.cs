@@ -10,7 +10,7 @@ using Mailer.Utilities.Helpers;
 
 namespace Mailer.Services
 {
-    public class EmailQueueService : IEmailQueueService
+    public class EmailQueueService : IEmailQueueServiceWs, IEmailQueueServiceCore
     {
         private readonly IEmailQueueRepository _emailQueueRepository;
 

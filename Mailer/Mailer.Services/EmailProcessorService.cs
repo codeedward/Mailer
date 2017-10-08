@@ -7,9 +7,9 @@ namespace Mailer.Services
 {
     public class EmailProcessorService : IEmailProcessorService
     {
-        private readonly IEmailQueueService _emailQueueService;
+        private readonly IEmailQueueServiceWs _emailQueueService;
 
-        public EmailProcessorService(IEmailQueueService emailQueueService)
+        public EmailProcessorService(IEmailQueueServiceWs emailQueueService)
         {
             _emailQueueService = emailQueueService;
         }
