@@ -4,11 +4,6 @@ namespace Mailer.DAL.Repository
 {
     public class RepositoryBase
     {
-        public MailerEntities MailerContext { get; set; }
-
-        public RepositoryBase()
-        {
-            MailerContext = new MailerEntities();
-        }
+        public MailerEntities MailerContext => new MailerEntities();
     }
 }
