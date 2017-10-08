@@ -54,9 +54,13 @@
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
       <Name>Mailer.Domain.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Service.Interface\Mailer.Service.Interface.csproj">
-      <Project>{648D81E3-BE00-4CF0-8340-0D736137719E}</Project>
-      <Name>Mailer.Service.Interface</Name>
+    <ProjectReference Include="..\Mailer.Service.Core\Mailer.Service.Core.csproj">
+      <Project>{22423f27-d00c-41e3-9f95-037fa3dc1969}</Project>
+      <Name>Mailer.Service.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Service.Interface.Core\Mailer.Service.Interface.Core.csproj">
+      <Project>{7CA26E32-FA60-45F1-960F-24EB02CBDE4D}</Project>
+      <Name>Mailer.Service.Interface.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

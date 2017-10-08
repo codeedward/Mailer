@@ -1,6 +1,6 @@
 ﻿using System.Transactions;
 using Mailer.Common.Constants;
-using Mailer.Service.Interface.Services;
+using Mailer.Service.Interface.WS.Service;
 using Mailer.Utilities.Helpers;
 
 namespace Mailer.Service.WS

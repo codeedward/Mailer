@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mailer.Core.IntegrationTest</RootNamespace>
     <AssemblyName>Mailer.Core.IntegrationTest</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,9 +88,9 @@
       <Project>{22423f27-d00c-41e3-9f95-037fa3dc1969}</Project>
       <Name>Mailer.Service.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Service.Interface\Mailer.Service.Interface.csproj">
-      <Project>{648d81e3-be00-4cf0-8340-0d736137719e}</Project>
-      <Name>Mailer.Service.Interface</Name>
+    <ProjectReference Include="..\Mailer.Service.Interface.Core\Mailer.Service.Interface.Core.csproj">
+      <Project>{7CA26E32-FA60-45F1-960F-24EB02CBDE4D}</Project>
+      <Name>Mailer.Service.Interface.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

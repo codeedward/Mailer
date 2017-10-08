@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Mailer.Service.Interface.Services;
+using Mailer.Service.Interface.WS.Service;
 using Quartz;
 
 namespace Mailer.WindowsService.Infrastructure

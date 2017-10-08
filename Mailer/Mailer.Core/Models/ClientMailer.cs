@@ -1,7 +1,7 @@
 ﻿using Mailer.Common.Models;
 using Mailer.Core.Interfaces;
 using Mailer.Domain.Core;
-using Mailer.Service.Interface.Services;
+using Mailer.Service.Interface.Core;
 
 namespace Mailer.Core.Models
 {

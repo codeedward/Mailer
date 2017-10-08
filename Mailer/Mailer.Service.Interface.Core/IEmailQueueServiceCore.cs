@@ -1,7 +1,7 @@
 ﻿using Mailer.Common.Models;
 using Mailer.Domain.Core;
 
-namespace Mailer.Service.Interface.Services
+namespace Mailer.Service.Interface.Core
 {
     public interface IEmailQueueServiceCore
     {

@@ -1,4 +1,4 @@
-﻿namespace Mailer.Service.Interface.Services
+﻿namespace Mailer.Service.Interface.WS.Service
 {
     public interface IEmailProcessorService
     {

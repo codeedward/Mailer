@@ -3,7 +3,7 @@ using Mailer.Common.Enums;
 using Mailer.Common.Models;
 using Mailer.Domain.Core;
 using Mailer.Repository.Interface;
-using Mailer.Service.Interface.Services;
+using Mailer.Service.Interface.Core;
 using Mailer.Utilities.Helpers;
 
 namespace Mailer.Service.Core
