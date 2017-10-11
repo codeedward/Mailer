@@ -1,5 +1,4 @@
 ﻿using Mailer.Common.Constants;
-using Mailer.Service.Interface.WS;
 using Mailer.Service.Interface.WS.WindowsService;
 using Mailer.Utilities.Helpers;
 using Microsoft.Practices.Unity;

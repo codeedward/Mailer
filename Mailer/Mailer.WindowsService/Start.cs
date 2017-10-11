@@ -1,4 +1,5 @@
-﻿using Mailer.WindowsService.Infrastructure;
+﻿using Mailer.Utilities.Helpers;
+using Mailer.WindowsService.Infrastructure;
 
 namespace Mailer.WindowsService
 {
@@ -6,6 +7,7 @@ namespace Mailer.WindowsService
     {
         private static void Main(string[] args)
         {
+            LogHelper.Info("Application start");
             Bootstraper.Initialise();
             MailerServiceConfiguration.Configure();
         }

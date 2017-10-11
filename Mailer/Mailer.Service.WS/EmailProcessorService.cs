@@ -16,6 +16,7 @@ namespace Mailer.Service.WS
 
         public void Process()
         {
+            LogHelper.Info("Start processing emails");
             var emailsQueue = _emailQueueService.GetEmailsToProcess();
             if (emailsQueue != null)
             {
