@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Mailer.Utilities.Helpers
 {
@@ -7,7 +8,7 @@ namespace Mailer.Utilities.Helpers
         private static readonly log4net.ILog _logger;
         static LogHelper()
         {
-            log4net.Config.XmlConfigurator.Configure();
+            log4net.Config.XmlConfigurator.Configure(new FileInfo("Logger.config"));
             _logger = log4net.LogManager.GetLogger(typeof(LogHelper));
         }
 
