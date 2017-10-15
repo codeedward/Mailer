@@ -10,10 +10,10 @@ namespace Mailer.Utilities.Helpers
         public static bool SendEmail(SendEmailDto sendEmailDto)
         {
             var debugSendingEmailsOn = ConfigurationHelper.GetBoolean(ConfigurationNames.DebugSendingEmailsOn, ConfiguratoinDefaultValues.DebugSendingEmailsOn);
+            var debugSendingEmailsResultValue = ConfigurationHelper.GetBoolean(ConfigurationNames.DebugSendingEmailsResultValue, ConfiguratoinDefaultValues.DebugSendingEmailsResultValue);
             if (debugSendingEmailsOn)
             {
-                Console.WriteLine($"Email was sent id: {sendEmailDto.Id}");
-                return true;
+                return debugSendingEmailsResultValue;
             }
             return DoSend(sendEmailDto);
         }

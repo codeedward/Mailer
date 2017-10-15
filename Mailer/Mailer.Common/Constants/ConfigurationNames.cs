@@ -5,5 +5,6 @@
         public const string IntervalAfterFailSendingAttemptInSeconds = "IntervalAfterFailSendingAttemptInSeconds";
         public const string ProcessEmailsJobInterval = "ProcessEmailsJobInterval";
         public const string DebugSendingEmailsOn = "DebugSendingEmailsOn";
+        public static string DebugSendingEmailsResultValue = "DebugSendingEmailsResultValue";
     }
 }

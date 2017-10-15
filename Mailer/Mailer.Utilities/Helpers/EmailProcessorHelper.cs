@@ -12,6 +12,7 @@ namespace Mailer.Utilities.Helpers
             var readySubject = ReplaceReplacements(emailQueue.SubjectTemplate, emailQueue.Replacements);
             var readyBody = ReplaceReplacements(emailQueue.BodyTemplate, emailQueue.Replacements);
             var sendEmailDto = new SendEmailDto(emailQueue.EmailQueueId, emailQueue.From, emailQueue.To, readyBody, readySubject, emailQueue.Host, emailQueue.Port);
+
             return EmailHelper.SendEmail(sendEmailDto);
         }
 

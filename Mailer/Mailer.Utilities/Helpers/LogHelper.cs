@@ -17,6 +17,11 @@ namespace Mailer.Utilities.Helpers
             _logger.Error(exception);
         }
 
+        public static void Error(string message)
+        {
+            _logger.Error(message);
+        }
+
         public static void Info(string message)
         {
             _logger.Info(message);

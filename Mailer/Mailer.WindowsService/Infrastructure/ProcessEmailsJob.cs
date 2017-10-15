@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Mailer.Service.Interface.WS.Service;
+using Mailer.Utilities.Helpers;
 using Quartz;
 
 namespace Mailer.WindowsService.Infrastructure
@@ -17,13 +18,16 @@ namespace Mailer.WindowsService.Infrastructure
 
         public void Execute(IJobExecutionContext context)
         {
+            LogHelper.Info("Start processing emails.");
             Process();
+            LogHelper.Info("Finish processing emails.");
         }
 
         public void Process()
         {
            _emailProcessorService.Process();
         }
+
         public void ProcessTest(string stage = "Continue")
         {
             string path = string.Format(@"C:\TopShelfSaveFileTest\{0}_{1}.txt", DateTime.Now.ToLongTimeString().Replace(':', '_'), stage);
