@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
+using Mailer.Common.Constants;
 using Mailer.Common.Dto;
 
 namespace Mailer.Utilities.Helpers
@@ -8,6 +9,12 @@ namespace Mailer.Utilities.Helpers
     {
         public static bool SendEmail(SendEmailDto sendEmailDto)
         {
+            var debugSendingEmailsOn = ConfigurationHelper.GetBoolean(ConfigurationNames.DebugSendingEmailsOn, ConfiguratoinDefaultValues.DebugSendingEmailsOn);
+            if (debugSendingEmailsOn)
+            {
+                Console.WriteLine($"Email was sent id: {sendEmailDto.Id}");
+                return true;
+            }
             return DoSend(sendEmailDto);
         }
 

@@ -14,13 +14,11 @@ namespace Mailer.Utilities.Helpers
 
         public static void Error(Exception exception)
         {
-            // TODO add logger execution
             _logger.Error(exception);
         }
 
         public static void Info(string message)
         {
-            // TODO add logger execution
             _logger.Info(message);
         }
     }

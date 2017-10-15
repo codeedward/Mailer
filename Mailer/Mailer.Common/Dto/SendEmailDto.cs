@@ -4,6 +4,7 @@ namespace Mailer.Common.Dto
 {
     public class SendEmailDto
     {
+        public long Id { get; set; }
         public EmailRecipient FromAddress { get; set; }
         public EmailRecipient ToAddress { get; set; }
         public string MessageBody { get; set; }
@@ -11,8 +12,9 @@ namespace Mailer.Common.Dto
         public string Host { get; set; }
         public int Port { get; set; }
 
-        public SendEmailDto(EmailRecipient fromAddress, EmailRecipient toAddress, string messageBody, string subject, string host, int port)
+        public SendEmailDto(long id, EmailRecipient fromAddress, EmailRecipient toAddress, string messageBody, string subject, string host, int port)
         {
+            Id = id;
             FromAddress = fromAddress;
             MessageBody = messageBody;
             Subject = subject;

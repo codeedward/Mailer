@@ -13,5 +13,15 @@ namespace Mailer.Utilities.Helpers
             }
             return int.TryParse(value, out var result) ? result : defaultValue;
         }
+
+        public static bool GetBoolean(string key, bool defaultValue)
+        {
+            var value = ConfigurationManager.AppSettings[key];
+            if (string.IsNullOrEmpty(value))
+            {
+                return defaultValue;
+            }
+            return bool.TryParse(value, out var result) ? result : defaultValue;
+        }
     }
 }
