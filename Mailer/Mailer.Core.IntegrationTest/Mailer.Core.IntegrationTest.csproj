@@ -72,6 +72,10 @@
       <Project>{4EEC0287-5B89-497C-8BE7-AFB77E589ACA}</Project>
       <Name>Mailer.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mailer.DAL.Db\Mailer.DAL.Db.csproj">
+      <Project>{12F86E05-268B-4E11-9BF5-C557EA346F5C}</Project>
+      <Name>Mailer.DAL.Db</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mailer.DAL.Repository\Mailer.DAL.Repository.csproj">
       <Project>{EBE4C6BE-3549-41AA-A6D7-4A02818C10E2}</Project>
       <Name>Mailer.DAL.Repository</Name>
