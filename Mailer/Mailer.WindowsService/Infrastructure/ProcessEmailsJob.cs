@@ -18,9 +18,9 @@ namespace Mailer.WindowsService.Infrastructure
 
         public void Execute(IJobExecutionContext context)
         {
-            LogHelper.Info("Start processing emails.");
+            LogHelper.Debug("Start processing emails.");
             Process();
-            LogHelper.Info("Finish processing emails.");
+            LogHelper.Debug("Finish processing emails.");
         }
 
         public void Process()

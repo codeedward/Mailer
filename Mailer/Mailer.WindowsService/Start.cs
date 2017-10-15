@@ -7,7 +7,7 @@ namespace Mailer.WindowsService
     {
         private static void Main(string[] args)
         {
-            LogHelper.Info("Application start");
+            LogHelper.Debug("Application start");
             Bootstraper.Initialise();
             MailerServiceConfiguration.Configure();
         }

@@ -26,5 +26,10 @@ namespace Mailer.Utilities.Helpers
         {
             _logger.Info(message);
         }
+
+        public static void Debug(string message)
+        {
+            _logger.Debug(message);
+        }
     }
 }
