@@ -57,10 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientMailerTest.cs" />
+    <Compile Include="EmailHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MailSettings.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +100,10 @@
     <ProjectReference Include="..\Mailer.Service.Interface.Core\Mailer.Service.Interface.Core.csproj">
       <Project>{7CA26E32-FA60-45F1-960F-24EB02CBDE4D}</Project>
       <Name>Mailer.Service.Interface.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailer.Utilities\Mailer.Utilities.csproj">
+      <Project>{78d45351-ed35-4329-a702-9ef811ec25ba}</Project>
+      <Name>Mailer.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

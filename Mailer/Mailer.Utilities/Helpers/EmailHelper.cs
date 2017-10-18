@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Mail;
 using Mailer.Common.Constants;
 using Mailer.Common.Dto;
