@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailQueueRepository.cs" />
-    <Compile Include="EmailReplacementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
@@ -62,10 +61,6 @@
     <ProjectReference Include="..\Mailer.Domain.Core\Mailer.Domain.Core.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
       <Name>Mailer.Domain.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mailer.Domain.WS\Mailer.Domain.WS.csproj">
-      <Project>{C6AB35C1-E665-4499-903C-5989C09379CC}</Project>
-      <Name>Mailer.Domain.WS</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mailer.DAL.Db\Mailer.DAL.Db.csproj">
       <Project>{12f86e05-268b-4e11-9bf5-c557ea346f5c}</Project>

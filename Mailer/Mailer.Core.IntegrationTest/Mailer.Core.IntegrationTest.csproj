@@ -40,10 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -81,17 +81,17 @@
       <Project>{12F86E05-268B-4E11-9BF5-C557EA346F5C}</Project>
       <Name>Mailer.DAL.Db</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.DAL.Repository\Mailer.DAL.Repository.csproj">
-      <Project>{EBE4C6BE-3549-41AA-A6D7-4A02818C10E2}</Project>
-      <Name>Mailer.DAL.Repository</Name>
+    <ProjectReference Include="..\Mailer.DAL.Repository.Core\Mailer.DAL.Repository.Core.csproj">
+      <Project>{a5d636c6-59d5-491a-91fd-67b609ed8ceb}</Project>
+      <Name>Mailer.DAL.Repository.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mailer.Domain.Core\Mailer.Domain.Core.csproj">
       <Project>{4DDE4D57-2D2D-4041-87FF-1000722D5B00}</Project>
       <Name>Mailer.Domain.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Repository.Interface\Mailer.Repository.Interface.csproj">
-      <Project>{09e73f61-fb46-497d-b068-12c8da13af64}</Project>
-      <Name>Mailer.Repository.Interface</Name>
+    <ProjectReference Include="..\Mailer.Repository.Interface.Core\Mailer.Repository.Interface.Core.csproj">
+      <Project>{671b0eb1-3d8f-4218-bfc2-f4ed3714f176}</Project>
+      <Name>Mailer.Repository.Interface.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mailer.Service.Core\Mailer.Service.Core.csproj">
       <Project>{22423f27-d00c-41e3-9f95-037fa3dc1969}</Project>

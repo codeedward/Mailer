@@ -53,9 +53,9 @@
       <Project>{4dde4d57-2d2d-4041-87ff-1000722d5b00}</Project>
       <Name>Mailer.Domain.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Repository.Interface\Mailer.Repository.Interface.csproj">
-      <Project>{09E73F61-FB46-497D-B068-12C8DA13AF64}</Project>
-      <Name>Mailer.Repository.Interface</Name>
+    <ProjectReference Include="..\Mailer.Repository.Interface.Core\Mailer.Repository.Interface.Core.csproj">
+      <Project>{671b0eb1-3d8f-4218-bfc2-f4ed3714f176}</Project>
+      <Name>Mailer.Repository.Interface.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mailer.Service.Interface.Core\Mailer.Service.Interface.Core.csproj">
       <Project>{7CA26E32-FA60-45F1-960F-24EB02CBDE4D}</Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mailer.Common.Models;
 using Mailer.Core.Models;
-using Mailer.DAL.Repository;
+using Mailer.DAL.Repository.Core;
 using Mailer.Domain.Core;
 using Mailer.Service.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

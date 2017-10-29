@@ -1,9 +1,7 @@
-﻿using Mailer.DAL.Repository;
-using Mailer.Repository.Interface;
-using Mailer.Service.Interface.WS.WindowsService;
+﻿using Mailer.DAL.Repository.WS;
+using Mailer.Repository.Interface.WS;
 using Mailer.Service.Interface.WS.Service;
 using Mailer.Service.WS;
-using Mailer.WindowsService.Infrastructure;
 using Microsoft.Practices.Unity;
 using Quartz;
 using Quartz.Impl;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mailer.Domain.WS;
-using Mailer.Repository.Interface;
+using Mailer.Repository.Interface.WS;
 using Mailer.Service.Interface.WS.Service;
 using Mailer.Utilities.Helpers;
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1F56D0B-C68A-48FE-BFDF-7DA085C8F300}</ProjectGuid>
+    <ProjectGuid>{A5D636C6-59D5-491A-91FD-67B609ED8CEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mailer.Service.WS</RootNamespace>
-    <AssemblyName>Mailer.Service.WS</AssemblyName>
+    <RootNamespace>Mailer.DAL.Repository.Core</RootNamespace>
+    <AssemblyName>Mailer.DAL.Repository.Core</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -43,31 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmailProcessorService.cs" />
-    <Compile Include="EmailQueueServiceWs.cs" />
+    <Compile Include="EmailQueueRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mailer.Common\Mailer.Common.csproj">
-      <Project>{2CCBB105-310C-4921-B385-677784DD1895}</Project>
+      <Project>{2ccbb105-310c-4921-b385-677784dd1895}</Project>
       <Name>Mailer.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Domain.WS\Mailer.Domain.WS.csproj">
-      <Project>{c6ab35c1-e665-4499-903c-5989c09379cc}</Project>
-      <Name>Mailer.Domain.WS</Name>
+    <ProjectReference Include="..\Mailer.Core\Mailer.Core.csproj">
+      <Project>{4eec0287-5b89-497c-8be7-afb77e589aca}</Project>
+      <Name>Mailer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Repository.Interface.WS\Mailer.Repository.Interface.WS.csproj">
-      <Project>{fef77424-8fd6-44a3-8551-34bad954c456}</Project>
-      <Name>Mailer.Repository.Interface.WS</Name>
+    <ProjectReference Include="..\Mailer.DAL.Db\Mailer.DAL.Db.csproj">
+      <Project>{12f86e05-268b-4e11-9bf5-c557ea346f5c}</Project>
+      <Name>Mailer.DAL.Db</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Service.Interface.WS\Mailer.Service.Interface.WS.csproj">
-      <Project>{861C178C-3433-428E-8E5D-33B13FE3D311}</Project>
-      <Name>Mailer.Service.Interface.WS</Name>
+    <ProjectReference Include="..\Mailer.Domain.Core\Mailer.Domain.Core.csproj">
+      <Project>{4dde4d57-2d2d-4041-87ff-1000722d5b00}</Project>
+      <Name>Mailer.Domain.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mailer.Utilities\Mailer.Utilities.csproj">
-      <Project>{78D45351-ED35-4329-A702-9EF811EC25BA}</Project>
-      <Name>Mailer.Utilities</Name>
+    <ProjectReference Include="..\Mailer.Repository.Interface.Core\Mailer.Repository.Interface.Core.csproj">
+      <Project>{671b0eb1-3d8f-4218-bfc2-f4ed3714f176}</Project>
+      <Name>Mailer.Repository.Interface.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

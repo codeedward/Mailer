@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Transactions;
+using Mailer.Common.Enums;
 using Mailer.DAL.Db;
 using Mailer.Domain.Core;
-using Mailer.Common.Enums;
+using Mailer.Repository.Interface.Core;
 
-
-namespace Mailer.DAL.Repository
+namespace Mailer.DAL.Repository.Core
 {
-    public class EmailQueueRepository : RepositoryBase//, IEmailQueueRepository
+    public class EmailQueueRepository : RepositoryBase, IEmailQueueRepository
     {
         public List<long> Save(CoreEmailDto emailQueueDto)
         {
