@@ -33,7 +33,20 @@ namespace Mailer.Core.IntegrationTest
                     BodyTemplate = "Body",
                     Host = "123",
                     Port = 25,
-                    To = new List<EmailRecipient>() { new EmailRecipient("abc@email.com", "abcTestName") }
+                    To = new List<EmailRecipient>() { new EmailRecipient("abc@email.com", "abcTestName") },
+                    Replacements = new List<CoreEmailReplacementDto>()
+                    {
+                        new CoreEmailReplacementDto()
+                        {
+                            Token = "[TOKEN1]",
+                            Value = "sth"
+                        },
+                        new CoreEmailReplacementDto()
+                        {
+                            Token = "[TEXT]",
+                            Value = "sth_text"
+                        }
+                    }
                 });
 
             Assert.IsTrue(response.MailIds.Count == 1);

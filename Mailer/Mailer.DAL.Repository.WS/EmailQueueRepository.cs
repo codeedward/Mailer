@@ -26,6 +26,7 @@ namespace Mailer.DAL.Repository.WS
                     where
                     emailQueue.EmailStatus == (byte)EmailQueueStatus.Unprocessed
                     && emailQueue.AvailableToSendFromUtc.Value < DateTime.UtcNow
+                    && emailQueue.TriesLeft > 0
                     orderby emailQueue.CreatedOn
                     select new
                     {

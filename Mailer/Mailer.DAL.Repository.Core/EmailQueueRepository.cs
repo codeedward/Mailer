@@ -47,7 +47,7 @@ namespace Mailer.DAL.Repository.Core
                         };
 
                         var replacements = new List<EmailReplacement>();
-                        foreach (var replacementDto in emailQueue.EmailReplacements)
+                        foreach (var replacementDto in emailQueueDto.Replacements)
                         {
                             var replacement = new EmailReplacement
                             {
