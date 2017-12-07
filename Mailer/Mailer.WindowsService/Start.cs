@@ -8,8 +8,16 @@ namespace Mailer.WindowsService
         private static void Main(string[] args)
         {
             LogHelper.Debug("Application start");
-            Bootstraper.Initialise();
-            MailerServiceConfiguration.Configure();
+
+            try
+            {
+                Bootstraper.Initialise();
+                MailerServiceConfiguration.Configure();
+            }
+            catch (System.Exception exception)
+            {
+                LogHelper.Error(exception);
+            }
         }
     }
 }

@@ -8,8 +8,13 @@ namespace Mailer.Utilities.Helpers
         private static readonly log4net.ILog _logger;
         static LogHelper()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("Logger.config"));
+            string configurationFilePath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Logger.config";
+            var loggerFile = new FileInfo(configurationFilePath);
+
+            log4net.Config.XmlConfigurator.Configure(loggerFile);
             _logger = log4net.LogManager.GetLogger(typeof(LogHelper));
+
+            _logger.Info($@"Logger config file path: {configurationFilePath}");
         }
 
         public static void Error(Exception exception)

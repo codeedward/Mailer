@@ -78,7 +78,9 @@
     <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Mailer.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Mailer.Designer.cs</LastGenOutput>

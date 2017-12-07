@@ -16,6 +16,7 @@ namespace Mailer.DAL.Repository.WS
         {
             using (var dbContext = MailerContext)
             {
+                dbContext.Database.Connection.Open();
                 var emailsResult = new List<EmailQueueDto>();
 
                 var queryGetEmailsToProcess =

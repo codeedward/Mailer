@@ -17,7 +17,9 @@ namespace Mailer.WindowsService.Infrastructure
 
         public void Start()
         {
+            LogHelper.Debug("Start service");
             _sched.Start();
+            LogHelper.Debug("Finish starting service");
         }
 
         public void Stop()
@@ -27,6 +29,7 @@ namespace Mailer.WindowsService.Infrastructure
 
         private void InitializeScheduler()
         {
+            LogHelper.Debug("Initialize scheduler");
             _sched =  Bootstraper.Container.Resolve<IScheduler>();
             _sched.JobFactory = new UnityJobFactory(Bootstraper.Container);
 
@@ -44,6 +47,7 @@ namespace Mailer.WindowsService.Infrastructure
                 .Build();
 
             _sched.ScheduleJob(job, trigger);
+            LogHelper.Debug("Finish scheduler initialization");
         }
     }
 }
